@@ -26,12 +26,12 @@ function SortingPanel () {
             <div className="sortingBox">
                 сортировать по:
                 <div className="sortBy" onClick={showSort}>{
-                    routeSet.sort === 'date' ? 'дате' : routeSet.sort === 'price' ? 'стоимости' : 'длительности' 
+                    routeSet.sort === 'date' ? 'дате' : routeSet.sort === 'price_min' ? 'стоимости' : 'длительности' 
                 }
                 {sortTools && 
                     <ul className="sortingList">
                         <li className="sortingItem" onClick={() => setSorting('date')}>времени</li>
-                        <li className="sortingItem" onClick={() => setSorting('price')}>стоимости</li>
+                        <li className="sortingItem" onClick={() => setSorting('price_min')}>стоимости</li>
                         <li className="sortingItem" onClick={() => setSorting('duration')}>длительности</li>
                     </ul>
                 }

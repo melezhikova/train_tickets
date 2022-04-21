@@ -2,6 +2,7 @@ import {
     FETCH_ROUTES_FAILURE, 
     FETCH_ROUTES_REQUEST, 
     FETCH_ROUTES_SUCCESS, 
+    SET_CURRENT_PAGE, 
     SET_ROUTE_SETTING 
 } from "../actions/actionTypes";
 
@@ -38,22 +39,34 @@ const initialState = {
         total_count: 0,
         items: [],
     },
+    currentPage: 1,
     loadingStatus: 'idle',
     error: null,
 }
 
 export default function routeSettingsReducer(state = initialState, action) {
+    const { routeSet } = state;
     switch (action.type) {
+        
         case SET_ROUTE_SETTING:
             const { name, value } = action.payload;
-            const { routeSet } = state;
             return {
                 ...state,
                 routeSet: {
                     ...routeSet,
                     [name]: value,
                 } 
-            } 
+            };
+        case SET_CURRENT_PAGE:
+            const { number } = action.payload;
+            return {
+                ...state,
+                currentPage: number,
+                routeSet: {
+                    ...routeSet,
+                    offset: routeSet.limit * (number - 1),
+                } 
+            };
         case FETCH_ROUTES_REQUEST:
             return {
                 ...state,

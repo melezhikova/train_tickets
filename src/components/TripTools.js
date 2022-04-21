@@ -60,7 +60,7 @@ function TripTools () {
             </div>
             <div className="tripToolsSection">
                 <label className="formDiscription" htmlFor="cost">Стоимость</label>
-                <input className="tripTollsCost" onChange={handleChange} id="cost" name="cost" type="range" multiple="2"></input>
+                <input className="tripTollsCost" onChange={handleChange} id="cost" name="cost" type="range" multiple></input>
             </div>
             <div className="tripToolsSection">
                 <div className="tripToolsSectionHeader">

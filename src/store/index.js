@@ -6,6 +6,7 @@ import {
 } from 'redux';
 import thunk from 'redux-thunk';
 import citiesReducer from "../reducers/cities";
+import emailReducer from '../reducers/email';
 import lastRoutesReducer from '../reducers/lastRoutes';
 import routeSettingsReducer from '../reducers/routeSettings';
 
@@ -13,6 +14,7 @@ const reducer = combineReducers({
     cities: citiesReducer,
     routeSettings: routeSettingsReducer,
     lastRoutes: lastRoutesReducer,
+    email: emailReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

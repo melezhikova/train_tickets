@@ -1,7 +1,7 @@
 body {
     font-family: 'Roboto';
     font-style: normal;
-    font-size: 16px;
+    font-size: 24px;
 }
 
 * {
@@ -33,20 +33,20 @@ body {
 
 .logo {
     font-weight: 900;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     color: #E5E5E5; 
-    padding: 1rem 13%;
+    padding: 15px 13%;
     background: rgba(0, 0, 0, 0.6);
 }
 
 .mainMenu {
-    padding: 1.5rem 13%;
+    padding: 26px 13%;
     background: #292929;
 }
 
 .mainMenu_item {
     font-weight: 300;
-    font-size: 1.25rem;
+    font-size: 1.25em;
     text-decoration: none;
     color: #FFFFFF;
 }
@@ -57,13 +57,13 @@ body {
 
 .mainHeaderContainer {
     display: flex;
-    padding: 13% 10% 0 10%;
+    padding: 253px 10% 0 10%;
     align-items: center;
 }
 
 .slogan {
     font-weight: 100;
-    font-size: 3rem;
+    font-size: 3em;
     color: #FFFFFF;
     margin-right: 5%;
 }
@@ -76,15 +76,15 @@ body {
 
 .mainHeaderForm {
     background: rgba(41, 41, 41, 0.8);
-    padding: 3.3rem 1rem 2.5rem;
+    padding: 79px 24px 52px 21px;
     width: 730px;
 }
 
 .secondaryHeaderForm {
     width: 80%;
     background: rgba(41, 41, 41, 0.8);
-    padding: 1rem 1rem 60px;
-    margin: 100px 10% 0;
+    padding: 28px 42px 76px;
+    margin: 111px 10% 0;
 }
 
 .inTwoLines {
@@ -99,8 +99,8 @@ body {
 
 .formDiscription {
     font-weight: 300;
-    font-size: 1.25rem;
-    line-height: 2.2rem;
+    font-size: 1.25em;
+    line-height: 2.2em;
     color: #FFFFFF;
 }
 
@@ -108,7 +108,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2.5em;
 }
 
 .directionInput, .dateInput {
@@ -117,14 +117,14 @@ body {
 
 .directionInput::before, .dateInput::before {
     content: '';
-    width: 0.8rem;
-    height: 1.25rem;
+    width: 0.8em;
+    height: 1.25em;
     position: absolute;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    right: 1rem;
-    top: 30%;
+    right: 15px;
+    top: 20%;
 }
 
 .directionInput::before {
@@ -136,33 +136,34 @@ body {
 }
 
 .dateInput:nth-child(n + 2) {
-    margin-left: 1.6rem;
+    margin-left: 1.6em;
 }
 
 .formControl {
+    color: #292929;
     font-weight: 400;
-    font-size: 0.75rem;
+    font-size: 0.75em;
     background: #FFFFFF;
     border-radius: 3px;
-    padding: 0.8rem 2.9rem 0.45rem 0.875rem;
+    padding: 0.8em 2.9em 0.45em 0.875em;
     outline: none;
 }
 
 .swapDirection {
-    width: 1rem;
-    height: 1rem;
+    width: 1em;
+    height: 1em;
     background-image: url(../src/img/swap.png);
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    margin: 0.3rem;
+    margin: 0.3em;
 }
 
 .directionsList {
     width: 100%;
     position: absolute;
     list-style-type: none;
-    padding: 0.625rem 0.8rem;
+    padding: 14px 22px;
     margin-top: 5px;
     background: #F5F4F6;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -172,8 +173,8 @@ body {
 
 .directionsListItem {
     font-weight: 400;
-    font-size: 0.75rem;
-    line-height: 0.875rem;
+    font-size: 0.75em;
+    line-height: 1.3em;
     font-variant: small-caps;
     color: #292929;
     cursor: pointer;
@@ -184,72 +185,26 @@ body {
     justify-content: flex-end;
 }
 
-.btn {
+.searchBtn {
+    font-size: 1em;
     font-weight: 700;
-    
     text-align: center;
     text-transform: uppercase;
     color: #292929;
     background: #FFA800;
     border-radius: 5px;
-    padding: 0.7rem 2.8rem;
+    padding: 16px 68px;
 }
 
-/*stage*/
-
-.stageBar {
-    display: flex;
-    width: 100%;
-    align-items: center;
-    background-color: #3E3C41;
+.btn:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.stageItem {
-    display: flex;
-    font-weight: 700;
-    background-color: #3E3C41;
-    padding: 20px 35px;
-}
-
-.stageItem:first-child {
-    padding-left: 10%;
-}
-
-.stageItemActive {
-    background-color: #FFA800;
-}
-
-.stageNumber {
-    width: 2rem;
-    font-size: 1.5rem;
-    color: #FFFFFF;
-    text-align: center;
-    border: 3px solid #FFFFFF;
-    border-radius: 50%;
-}
-
-.stageName {
-    color: #FFFFFF;
-    font-size: 1.25rem;
-    margin: 0.25rem 0 0 20px;
-}
-
-.stageArrow {
-    width: 36px;
-    height: calc(1.5rem + 46px);
-    background-image: url('../src/img/arrow.png');
-    background-position: center;
-    background-size: contain;
-    background-repeat: no-repeat;
-    
-}
-
-.stageArrowActive {
-    width: 0;
-    height: 0;
-    border: 36px solid transparent;
-    border-left-color: #FFA800;
-    border-right: 0;
+.btn:active {
+    color: #FFA800;
+    background: #E5E5E5;
+    border: 1px solid #FFA800;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 /*about*/
@@ -277,7 +232,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-    padding: 2.5rem 15%;
+    padding: 60px 15%;
 }
 
 .howItWorksContainer {
@@ -288,13 +243,13 @@ body {
 
 .howItWorksHeader {
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     text-transform: uppercase;
 }
 
 .howItWorksLink {
     color: #FFFFFF;
-    padding: 1rem 4%;
+    padding: 1em 4%;
     border: 1px solid #FFFFFF;
     border-radius: 5px;
     text-decoration: none;
@@ -303,7 +258,7 @@ body {
 .benefitsBox {
     display: flex;
     justify-content: space-between;
-    padding: 3rem 13%;
+    padding: 3em 13%;
 }
 
 .benefit {
@@ -313,14 +268,14 @@ body {
 }
 
 .benefitPic {
-    width: 5.625rem;
-    height: 5.625rem;
+    width: 5.625em;
+    height: 5.625em;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    border: 0.6rem solid rgba(229, 229, 229, 0.2);
+    border: 0.6em solid rgba(229, 229, 229, 0.2);
     border-radius: 50%;
-    margin-bottom: 1.4rem;
+    margin-bottom: 1.4em;
 }
 
 .benefitFirst {
@@ -336,7 +291,7 @@ body {
 }
 
 .benefitDiscription {
-    width: 9rem;
+    width: 9em;
     text-align: center;
 }
 
@@ -348,7 +303,7 @@ body {
 
 .reviewsTitle {
     font-weight: 500;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     text-transform: uppercase;
     margin-bottom: 50px;
 }
@@ -369,7 +324,7 @@ body {
 
 .reviewAuthorAvatar {
     width: 33%;
-    height: 8.3rem;
+    height: 8.3em;
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -385,13 +340,13 @@ body {
 
 .reviewBox {
     width: 66%;
-    font-size: 0.75rem;
-    margin-left: 1rem;
+    font-size: 0.75em;
+    margin-left: 24px;
 }
 
 .reviewAuthorName {
     font-weight: 500;
-    margin-bottom: 1rem;
+    margin-bottom: 24px;
 }
 
 .reviewText {
@@ -406,18 +361,75 @@ body {
 }
 
 .reviewControl {
-    width: 0.8rem;
-    height: 0.8rem;
+    width: 0.8em;
+    height: 0.8em;
     border-radius: 50%;
     background-color: #E5E5E5;
 } 
 
 .reviewControl:nth-child(n + 2) {
-    margin-left: 0.4rem;
+    margin-left: 0.4em;
 }
 
 .reviewControlActive {
     background-color: #C4C4C4;
+}
+
+/*stage*/
+
+.stageBar {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    background-color: #3E3C41;
+}
+
+.stageItem {
+    display: flex;
+    font-weight: 700;
+    background-color: #3E3C41;
+    padding: 20px 35px;
+}
+
+.stageItem:first-child {
+    padding-left: 10%;
+}
+
+.stageItemActive {
+    background-color: #FFA800;
+}
+
+.stageNumber {
+    width: 56px;
+    font-size: 1.5em;
+    color: #FFFFFF;
+    text-align: center;
+    border: 3px solid #FFFFFF;
+    border-radius: 50%;
+}
+
+.stageName {
+    color: #FFFFFF;
+    font-size: 1.25em;
+    margin: 0.25em 0 0 20px;
+}
+
+.stageArrow {
+    width: 38px;
+    height: calc(1.5em + 46px);
+    background-image: url('../src/img/arrow.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+}
+
+.stageArrowActive {
+    width: 0;
+    height: 0;
+    border: 45px solid transparent;
+    border-left-color: #FFA800;
+    border-right: 0;
 }
 
 /*Tickets*/
@@ -425,16 +437,17 @@ body {
 .mainContainer {
     display: flex;
     background: #F7F5F9;
-    padding: 95px 13% 193px;
+    padding: 95px 10% 193px;
+    margin: auto;
 }
 
 .leftPanel {
-    width: 18.75%;
-    min-width: 250px;
+    width: 20%;
+    min-width: 300px;
 }
 
 .rightPanel {
-    width: 55.25%;
+    width: 75%;
     min-width: 700px;
     margin-left: 5%;
 }
@@ -459,7 +472,7 @@ body {
 }
 
 .dateInput {
-    margin-bottom: 1rem;
+    margin-bottom: 24px;
 }
 
 .tripTollsItem {
@@ -468,7 +481,7 @@ body {
 }
 
 .tripTollsItem:nth-child(n + 2) {
-    margin-top: 1.46rem;
+    margin-top: 35px;
 }
 
 .tripTollsItemPic {
@@ -505,12 +518,12 @@ body {
 
 .tripTollsItemDiscripton {
     color: #FFFFFF;
-    font-size: 0.75rem;
+    font-size: 0.75em;
     margin-left: 35px;
 }
 
 .tripTollsItemSwitchTrue, .tripTollsItemSwitchFalse {
-    width: 3rem;
+    width: 3em;
     height: 28px;
     background-repeat: no-repeat;
     background-position: center;
@@ -536,7 +549,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 0.8rem;
+    margin-bottom: 20px;
 }
 
 .tripToolsSectionHeaderBox {
@@ -550,7 +563,7 @@ body {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
-    margin-right: 0.5rem;
+    margin-right: 12px;
 }
 
 .tripToolsSectionHeaderPicThere {
@@ -573,13 +586,17 @@ body {
     background-image: url('./img/tripTools/closed.png');
 }
 
+.closed:hover, .opened:hover {
+    background-image: url('./img/tripTools/closedHover.png');
+}
+
 .opened {
     background-image: url('./img/tripTools/opened.png');
 }
 
 .tripToolsSectionHeaderText {
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.25em;
     color: #FFFFFF;
 }
 
@@ -587,11 +604,11 @@ body {
     display: block;
     font-weight: 400;
     color: #E5E5E5;
-    margin-bottom: 0.625rem;
+    margin-bottom: 15px;
 }
 
 .tripTollsTimeDiscriptionBack {
-    margin-top: 1.9rem;
+    margin-top: 45px;
     text-align: right;
 }
 
@@ -603,7 +620,7 @@ body {
 
 .lastRoutesHeader {
     font-weight: 500;
-    font-size: 1.25rem;
+    font-size: 1.25em;
     text-transform: uppercase;  
     color: #000000;
     text-align: center;
@@ -627,14 +644,14 @@ body {
 }
 
 .lastRouteCities {
-    font-size: 0.83rem;
+    font-size: 0.83em;
     text-transform: capitalize;
     color: #292929;
     margin-bottom: 5px;
 }
 
 .lastRouteStations {
-    font-size: 0.67rem;
+    font-size: 0.67em;
     color: #928F94;
     margin-bottom: 30px;
 }
@@ -642,20 +659,20 @@ body {
 .lastRouteDetailsPrice {
     display: flex;
     align-items: baseline;
-    font-size: 0.67rem;
+    font-size: 0.67em;
     color: #928F94;
 }
 
 .lastRouteDetailsPriceFigure {
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.5em;
     color: #FFA800;
     margin-left: 5px;
 }
 
-.lastRouteDetailsPriceСurrency {
+.lastRouteDetailsPriceСurrency, .seatsPriceСurrency {
     width: 20px;
-    height: 1rem;
+    height: 1em;
     background-image: url('../src/img/rub.png');
     background-position: center;
     background-repeat: no-repeat;
@@ -669,7 +686,7 @@ body {
     display: flex;
     justify-content: space-between;
     font-weight: 400;
-    font-size: 0.75rem;
+    font-size: 0.75em;
     color: #928F94;
 }
 
@@ -719,6 +736,246 @@ body {
     color: #2D2B2F;
 }
 
+/*routes*/
+
+.routes_routeContainer {
+    display: flex;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    margin-top: 47px;
+}
+
+.routes_routeContainerLeftSide {
+    width: 20%;
+    background-color: #E4E0E9;
+    padding: 30px 18px 30px 26px;
+}
+
+.routes_routeTrainPicBorder {
+    display: flex;
+    width: 86px;
+    height: 86px;
+    border: 2px solid #FFFFFF;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.routes_routeTrainPic {
+    width: 44px;
+    height: 52px;
+    background-image: url('../src/img/routes/routeTrain.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin: auto;
+}
+
+.routes_routeName {
+    font-weight: 700;
+    font-size: 1em;
+    text-align: center;
+    color: #3E3C41;
+    margin-top: 17px;
+}
+
+.routes_routeItinerary {
+    font-size: 0.67em;
+    line-height: 0.89em;
+    color: #292929;
+    text-transform: capitalize;
+    margin-top: 15px;
+}
+
+.routes_routeItineraryFromBox {
+    display: flex;
+}
+
+.routes_routeItineraryAroow {
+    width: 13px;
+    height: 10px;
+    background-image: url('../src/img/routes/routeArrow1.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 5px;
+}
+
+.routes_routeDetails {
+    display: flex;
+    width: 80%;
+}
+
+.routes_timing {
+    display: flex;
+    width: 65%;
+    padding: 54px 40px 0;
+    margin-left: auto;
+    margin-right: auto;
+    border-right: 1px dashed #E5E5E5;
+}
+
+.routes_timingTime {
+    font-weight: 700;
+    font-size: 1em;
+    color: #000000;
+}
+
+.routes_timingCity {
+    font-size: 0.7em;
+    color: #292929;
+    text-transform: capitalize;
+}
+
+.routes_timingStation {
+    font-size: 0.67em;
+    color: #928F94;
+    text-transform: capitalize;
+}
+
+.routes_duration {
+    margin: 0 40px;
+}
+
+.routes_durationTime {
+    font-size: 0.75em;
+    color: #C4C4C4;
+}
+
+.routes_yellowArrowPic {
+    width: 30px;
+    height: 20px;
+    background-image: url('../src/img/routes/vector.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: auto;
+}
+
+.routes_seats {
+    padding: 48px 20px 24px 34px;
+}
+
+.seatsBox {
+    font-size: 0.67em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.seatsType {
+    color: #3E3C41;
+}
+
+.seatsDetails {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.seatsQuantity {
+    font-weight: 500;
+    color: #FFA800;
+    margin: 0 15px 0 5px;
+}
+
+.seatsPrice {
+    display: flex;
+    align-items: center;
+    color: #928F94;
+}
+
+.seatsPriceFigure {
+    font-weight: 700;
+    font-size: 1.5em;
+    color: #2D2B2F;
+    margin: 0 5px;
+}
+
+.seatsPriceСurrency {
+    width: 16px;
+    height: 17px;
+}
+
+.routesBtn {
+    font-weight: 700;
+    font-size: 1em;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 6px 15px;
+    background-color: #FFA800;
+    border: none;
+    border-radius: 5px;
+}
+
+/*pages*/
+
+.pages {
+    display: flex;
+    justify-content: end;
+    margin-top: 142px;
+}
+
+.pages_boxArrow {
+    display: flex;
+    width: 84px;
+    height: 75px;
+    border: 2px solid #C4C4C4;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pages_boxArrow:first-child {
+    margin-right: 35px;
+}
+
+.pages_leftArrow, .pages_rightArrow {
+    width: 18px;
+    height: 29px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: auto;
+}
+
+.pages_leftArrow {
+    background-image: url('../src/img/routes/pageLeft.png');
+}
+
+.pages_rightArrow {
+    background-image: url('../src/img/routes/pageRight.png');
+}
+
+.pageNumber {
+    font-weight: 700;
+    font-size: 1.25em;
+    text-align: center;
+    color: #928F94;
+    width: 84px;
+    height: 75px;
+    padding: 20px 0;
+    margin-right: 35px;
+    border: 2px solid #C4C4C4;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.pageNumber:hover {
+    color: #FFA800;
+    border: 2px solid #FFA800;
+}
+
+.pageNumberActive {
+    color: #FFFFFF;
+    background: #FFA800;
+}
+
+.pageNumberActive:hover {
+    color: #FFFFFF;
+}
+
+
 /*footer*/
 
 footer {
@@ -727,7 +984,7 @@ footer {
 }
 
 .footerTitle {
-    font-size: 1.25rem;
+    font-size: 1.25em;
     font-weight: 500;
     margin: 0;
 }
@@ -744,12 +1001,12 @@ footer {
 
 .footerContactsItem {
     display: flex;
-    margin-top: 1.25rem;
+    margin-top: 1.25em;
 }
 
 .footerContactsItemPicture {
-    width: 1.25rem;
-    height: 1.25rem;
+    width: 1.25em;
+    height: 1.25em;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
@@ -773,7 +1030,7 @@ footer {
 
 .footerContactsItemText {
     color: #FFFFFF;
-    margin-left: 1.5rem;
+    margin-left: 1.5em;
 }
 
 .footerSubscription {
@@ -781,7 +1038,7 @@ footer {
 }
 
 .footerForm {
-    margin: 1.25rem 0 1.8rem;
+    margin: 1.25em 0 1.8em;
 }
 
 .footerFormText {
@@ -790,17 +1047,29 @@ footer {
 }
 
 .footerFormInput {
-    padding: 0.7rem 21px;
+    padding: 0.7em 21px;
     border-radius: 3px;
 }
 
 .subscriptionButton {
     color: #FFFFFF;
-    margin-left: 1.375rem;
-    padding: 0.7rem 15px;
+    margin-left: 1.375em;
+    padding: 0.7em 15px;
     border: 1px solid #FFFFFF;
     border-radius: 3px;
     background-color: #2D2B2F;
+}
+
+.subscriptionButton:hover {
+    color: #2D2B2F;
+    background: #FFCA62;
+    border: 1px solid #FFCA62;
+}
+
+.subscriptionButton:active {
+    color: #2D2B2F;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
 }
 
 .footer_socialLinks {
@@ -811,30 +1080,51 @@ footer {
 .socialLinkItem {
     display: block;
     width: 50px;
-    height: 1.25rem;
+    height: 30px;
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
+    margin-right: 30px;
 }
 
 .youtube {
     background-image: url('../src/img/footer/youTube.png');
 }
 
-.instagram {
-    background-image: url('../src/img/footer/instagram.png');
+.youtube:active {
+    background-image: url('../src/img/footer/youTubeActive.png');
+}
+
+.linkedin {
+    background-image: url('../src/img/footer/linkedin.png');
+}
+
+.linkedin:active {
+    background-image: url('../src/img/footer/linkedinActive.png');
 }
 
 .googlePlus {
     background-image: url('../src/img/footer/googlePlus.png');
 }
 
+.googlePlus:active {
+    background-image: url('../src/img/footer/googlePlusActive.png');
+}
+
 .facebook {
     background-image: url('../src/img/footer/facebook.png');
 }
 
+.facebook:active {
+    background-image: url('../src/img/footer/facebookActive.png');
+}
+
 .twitter {
     background-image: url('../src/img/footer/twitter.png');
+}
+
+.twitter:active {
+    background-image: url('../src/img/footer/twitterActive.png');
 }
 
 .copyright {
@@ -845,13 +1135,13 @@ footer {
 }
 
 .footerLogo {
-    font-size: 1.5rem;
+    font-size: 1.5em;
     font-weight: 900;
 }
 
 .up {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 1.5em;
+    height: 1.5em;
     background-image: url('../src/img/footer/up.png');
     background-repeat: no-repeat;
     background-position: center;

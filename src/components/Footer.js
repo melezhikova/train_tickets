@@ -1,11 +1,19 @@
+import { useSelector, useDispatch } from "react-redux";
+import { fetchEmail, changeEmailField } from "../actions/actionCreators";
+
 function Footer () {
 
+    const { email } = useSelector(state => state.email);
+    const dispatch = useDispatch();
     const handleSubmit = evt => {
         evt.preventDefault();
+        const {value} = evt.target;
+        dispatch(fetchEmail(email));
     }
 
-    const handleChange = () => {
-        
+    const handleChange = evt => {
+        const {value} = evt.target;
+        dispatch(changeEmailField(value));
     }
 
     return (
@@ -40,7 +48,7 @@ function Footer () {
                     <h3 className="footerTitle">Подписка</h3>
                     <form className="footerForm" onSubmit={handleSubmit}>
                         <label className="footerFormText" htmlFor="footerForm_email">Будьте в курсе событий</label>
-                        <input className="footerFormInput" onChange={handleChange} name="footerForm_email" type="email" placeholder="e-mail"></input>
+                        <input className="footerFormInput" onChange={handleChange} type="email" placeholder="e-mail" value={email} required></input>
                         <button className="subscriptionButton">ОТПРАВИТЬ</button>
                     </form>
                     <h3 className="footerTitle">Подписывайтесь на нас</h3>
@@ -51,8 +59,8 @@ function Footer () {
                             </a>
                         </li>
                         <li className="socialLink">
-                            <a href="http://somewhere" className="socialLinkItem instagram">
-                                <span className="visually-hidden">instagram</span>
+                            <a href="http://somewhere" className="socialLinkItem linkedin">
+                                <span className="visually-hidden">linkedin</span>
                             </a>
                         </li>
                         <li className="socialLink">

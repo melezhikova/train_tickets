@@ -1,5 +1,7 @@
 import Footer from "./Footer";
 import LastRoutes from "./LastRoutes";
+import Routes from "./Routes";
+import RoutesPages from "./RoutesPages";
 import SecondaryHeader from "./SecondaryHeader";
 import SortingPanel from "./SortingPanel";
 import Stage from "./Stage";
@@ -19,7 +21,8 @@ function Tickets () {
                 </aside>
                 <aside className="rightPanel">
                     <SortingPanel />
-
+                    <Routes />
+                    <RoutesPages />
                 </aside>
             </main>
             <Footer />

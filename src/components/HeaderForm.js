@@ -65,6 +65,7 @@ function HeaderForm (props) {
 
     const chooseCity = (direction, city) => {
         dispatch(changeCityField(direction, city));
+        setFocus(prevState => ({...prevState, from: false, to: false}));
     }
 
     return (
@@ -109,7 +110,7 @@ function HeaderForm (props) {
                 </div>
             </div>
             <div className="btnBox">
-                <button className="btn">НАЙТИ БИЛЕТЫ</button>
+                <button className="searchBtn btn">НАЙТИ БИЛЕТЫ</button>
             </div>
         </form>
     )
