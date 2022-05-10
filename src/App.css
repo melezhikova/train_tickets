@@ -8,7 +8,7 @@ body {
     box-sizing: border-box;
 }
 
-.visually-hidden {
+.visually-hidden, .react-datepicker__day-names {
     width: 1px;
     height: 1px;
     clip: rect(1px, 1px, 1px, 1px);
@@ -133,20 +133,54 @@ body {
 
 .dateInput::before {
     background-image: url(../src/img/calendar.svg);
+    z-index: 99;
 }
 
 .dateInput:nth-child(n + 2) {
     margin-left: 1.6em;
 }
 
+div.react-datepicker__header {
+    background-color: #FFFFFF;
+    padding: 15px 0;
+    text-transform: capitalize;
+}
+
+span.react-datepicker__navigation-icon {
+    top: 7px;
+}
+
+span.react-datepicker__navigation-icon::before {
+    height: 4px;
+    width: 4px;
+    border-color: #000000;
+}
+
+div.react-datepicker__day--outside-month {
+    color: #c0bec2;
+}
+
+div.react-datepicker__day--selected {
+    color: #000000;
+    background: rgba(255, 168, 0, 0.31);
+    border: 2px solid #FFA800;
+    border-radius: 5px;
+}
+
 .formControl {
+    font-family: 'Roboto';
     color: #292929;
     font-weight: 400;
     font-size: 0.75em;
+    text-transform: capitalize;
     background: #FFFFFF;
     border-radius: 3px;
     padding: 0.8em 2.9em 0.45em 0.875em;
     outline: none;
+}
+
+.formControlInTripTools {
+    padding: 0.8em 0.4em 0.45em 0.875em;
 }
 
 .swapDirection {
@@ -540,9 +574,55 @@ body {
     background-image: url('../src/img/tripTools/on.png')
 }
 
-.tripTollsItemSwitchInput {
-    width: 1px;
-    height: 1px;
+.fromToTitle {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fromToTitle_text {
+    font-size: 0.75em;
+    line-height: 0.875em;
+    color: #FFFFFF;
+}
+
+div.input-range {
+    margin-bottom: 32px;
+}
+
+div.input-range__track {
+    height: 19px;
+    background: #3E3C41;
+    border: 1px solid #C4C4C4;
+    border-radius: 8px;
+}
+
+div.input-range__track--active {
+    background: #FFA800;
+    border: none;
+}
+
+div.input-range__slider {
+    width: 24px;
+    height: 24px;
+    background: #FFFFFF;
+    border: none;
+    margin-top: -22px;
+}
+
+span.input-range__label {
+    top: 30px;
+    font-size: 16px;
+    color: #E5E5E5; 
+}
+
+span.input-range__label--max {
+    right: 10px;
+}
+
+span.input-range__label--value {
+    top: 5px;
+    font-size: 16px;
+    color: #E5E5E5;
 }
 
 .tripToolsSectionHeader {
@@ -618,12 +698,11 @@ body {
 
 /*lastRoutes*/
 
-.lastRoutesHeader {
+.sectionHeader {
     font-weight: 500;
     font-size: 1.25em;
     text-transform: uppercase;  
     color: #000000;
-    text-align: center;
     margin: 94px 0 26px;
 }
 
@@ -973,6 +1052,62 @@ body {
 
 .pageNumberActive:hover {
     color: #FFFFFF;
+}
+
+/*seats*/
+
+.sectionSeats {
+    margin-top: 0;
+    margin-bottom: 48px;
+}
+
+.seatsBtn {
+    margin-top: 70px;
+    text-transform: uppercase;
+    padding: 16px 70px;
+}
+
+/*train*/
+
+.train {
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    margin-bottom: 30px;
+}
+
+.header_trainStart, .header_trainEnd {
+    display: flex;
+    padding: 36px 20px 32px;
+}
+
+.header_trainEnd {
+    justify-content: flex-end;
+}
+
+.headerPic_trainStart, .headerPic_trainEnd {
+    width: 76px;
+    height: 60px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.headerPic_trainStart {
+    background-image: url('../src/img/train/start.png');
+}
+
+.headerPic_trainEnd {
+    background-image: url('../src/img/train/end.png');
+}
+
+.changeTrainBtn {
+    font-size: 1em;
+    font-weight: 700;
+    border: 1px solid #292929;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    padding: 16px 34px;
 }
 
 

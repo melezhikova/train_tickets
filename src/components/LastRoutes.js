@@ -8,13 +8,13 @@ function LastRoutes () {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(lastRoutes, lastRoutes.length);
+        console.log(lastRoutes);
         dispatch(fetchLastRoutes()).then (console.log(lastRoutes));
     },[]);
 
     return (
         <section className="lastRoutes">
-            <div className="lastRoutesHeader">ПОСЛЕДНИЕ БИЛЕТЫ</div>
+            <div className="sectionHeader">ПОСЛЕДНИЕ БИЛЕТЫ</div>
             {lastRoutes.length > 0 && <div className="lastRoutesBox">
                 {lastRoutes.map(o => (
                     <div key={o.departure._id} className="lastRouteItem">

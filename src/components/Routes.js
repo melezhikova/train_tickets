@@ -1,16 +1,23 @@
 import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import AvailableSeats from "./AvailableSeats";
 import { format } from "date-fns";
 import { useEffect } from "react";
-import { fetchRoutes } from "../actions/actionCreators";
+import { fetchRoutes, setTrain } from "../actions/actionCreators";
 
 function Routes () {
     const { routes, routeSet } = useSelector(state => state.routeSettings);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect (() => {
         dispatch(fetchRoutes(routeSet));
-    },[routeSet])
+    },[routeSet, dispatch])
+
+    const chooseTrain = route => {
+        dispatch(setTrain(route));
+        navigate('/seats');
+    }
 
     return (
         <section className="routes">
@@ -32,16 +39,18 @@ function Routes () {
                     <div className="routes_routeDetails">
                         <div className="routes_timing">
                             <div className="routes_timingItinerary">
-                                <div className="routes_timingTime">{format(new Date(o.departure.from.datetime), 'mm:ss')}</div>
+                                <div className="routes_timingTime">{format(new Date(o.departure.from.datetime * 1000),'hh:mm')}</div>
                                 <div className="routes_timingCity">{o.departure.from.city.name}</div>
                                 <div className="routes_timingStation">{o.departure.from.railway_station_name}</div>
                             </div>
                             <div className="routes_duration">
-                                <div className="routes_durationTime">{`${Math.trunc(o.departure.duration / 3600)}:${(o.departure.duration % 3600) / 60}`}</div>
+                                <div className="routes_durationTime">
+                                    <div className="routes_durationTime">{`${Math.trunc(o.departure.duration / 3600)}:${((o.departure.duration % 3600) / 60) < 10 ? `0${(o.departure.duration % 3600) / 60}` : (o.departure.duration % 3600) / 60}`}</div>
+                                </div>
                                 <div className="routes_yellowArrowPic"></div>
                             </div>
                             <div className="routes_timingItinerary">
-                                <div className="routes_timingTime">{format(new Date(o.departure.to.datetime), 'mm:ss')}</div>
+                                <div className="routes_timingTime">{format(new Date(o.departure.to.datetime * 1000), 'hh:mm')}</div>
                                 <div className="routes_timingCity">{o.departure.to.city.name}</div>
                                 <div className="routes_timingStation">{o.departure.to.railway_station_name}</div>
                             </div>
@@ -59,7 +68,7 @@ function Routes () {
                             {o.departure.available_seats_info.first && 
                                 <AvailableSeats type="Люкс" quantity={o.departure.available_seats_info.first} price={o.departure.price_info.first.bottom_price} />
                             }
-                            <button className="routesBtn btn">Выбрать места</button>
+                            <button onClick={() => chooseTrain(o)} className="routesBtn btn">Выбрать места</button>
                         </div>
                     </div>
                 </div>

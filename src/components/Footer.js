@@ -7,7 +7,6 @@ function Footer () {
     const dispatch = useDispatch();
     const handleSubmit = evt => {
         evt.preventDefault();
-        const {value} = evt.target;
         dispatch(fetchEmail(email));
     }
 

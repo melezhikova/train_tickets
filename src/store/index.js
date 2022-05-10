@@ -9,12 +9,14 @@ import citiesReducer from "../reducers/cities";
 import emailReducer from '../reducers/email';
 import lastRoutesReducer from '../reducers/lastRoutes';
 import routeSettingsReducer from '../reducers/routeSettings';
+import seatsReducer from '../reducers/seats';
 
 const reducer = combineReducers({
     cities: citiesReducer,
     routeSettings: routeSettingsReducer,
     lastRoutes: lastRoutesReducer,
     email: emailReducer,
+    seats: seatsReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

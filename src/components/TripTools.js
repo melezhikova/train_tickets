@@ -1,9 +1,16 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { setRouteSetting } from "../actions/actionCreators";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale } from  "react-datepicker";
+import ru from 'date-fns/locale/ru';
+import InputRange from 'react-input-range';
+import "react-input-range/lib/css/index.css";
 
 function TripTools () {
 
+    registerLocale('ru', ru);
     const { routeSet } = useSelector(state => state.routeSettings);
     const dispatch = useDispatch();
     const tools = [
@@ -18,9 +25,9 @@ function TripTools () {
     const [visionThere, setVisionThere] = useState(false);
     const [visionBack, setVisionBack] = useState(false);
 
-    const handleChange = evt => {
-        const { name, value } = evt.target;
-        dispatch(setRouteSetting(name, value));
+    const handleChange = (name, value) => {
+        dispatch(setRouteSetting(`${name}_from`, value.min));
+        dispatch(setRouteSetting(`${name}_to`, value.max));
     }
 
     const toggleTools = (name, value) => {
@@ -39,13 +46,29 @@ function TripTools () {
     return (
         <form className="tripTools">
             <div className="tripToolsSection">
-                <label className="formDiscription" htmlFor="dateFrom">Дата поездки</label>
+                <div className="formDiscription">Дата поездки</div>
                 <div className="dateInput">
-                    <input onChange={handleChange} value={routeSet.date_start} type="date" id="dateFrom" name="dateFrom" className="formControl" />
+                    <DatePicker 
+                        dateFormat="yyyy-MM-dd"
+                        locale="ru" 
+                        selected={routeSet.date_start} 
+                        onChange={(date) => dispatch(setRouteSetting("date_start", date))}
+                        className="formControl formControlInTripTools" 
+                        placeholderText={"ДД/ММ/ГГ"} 
+                        shouldCloseOnSelect={false}
+                    />
                 </div>
-                <label className="formDiscription" htmlFor="dateTo">Дата возвращения</label>
+                <div className="formDiscription" htmlFor="dateTo">Дата возвращения</div>
                 <div className="dateInput">
-                    <input onChange={handleChange} value={routeSet.date_end} type="date" id="dateTo" name="dateTo" className="formControl" />
+                    <DatePicker 
+                        dateFormat="yyyy-MM-dd"
+                        locale="ru" 
+                        selected={routeSet.date_end} 
+                        onChange={(date) => dispatch(setRouteSetting("date_end", date))} 
+                        className="formControl formControlInTripTools" 
+                        placeholderText={"ДД/ММ/ГГ"} 
+                        shouldCloseOnSelect={false}
+                    />
                 </div>
             </div>
             <div className="tripToolsSection">
@@ -59,8 +82,17 @@ function TripTools () {
                 ))}
             </div>
             <div className="tripToolsSection">
-                <label className="formDiscription" htmlFor="cost">Стоимость</label>
-                <input className="tripTollsCost" onChange={handleChange} id="cost" name="cost" type="range" multiple></input>
+                <div className="formDiscription">Стоимость</div>
+                <div className="fromToTitle">
+                    <div className="fromToTitle_text">от</div>
+                    <div className="fromToTitle_text">до</div>
+                </div>
+                <InputRange 
+                    maxValue={10000}
+                    minValue={0}
+                    value={{min: routeSet.price_from, max: routeSet.price_to}}
+                    onChange={value => handleChange('price', value)} 
+                />
             </div>
             <div className="tripToolsSection">
                 <div className="tripToolsSectionHeader">
@@ -71,10 +103,22 @@ function TripTools () {
                     <div onClick={toggleVisionThere} className={visionThere ? "tripToolsSectionHeaderToggle opened" : "tripToolsSectionHeaderToggle closed"}></div>
                 </div>    
                 <div className={visionThere ? "" : "visually-hidden"}>
-                    <label className="tripTollsTimeDiscription" htmlFor="departureTimeThere">Время отбытия</label>
-                    <input className="tripTollsTime" min="0:00" max="24:00" step="1:00" onChange={handleChange} id="departureTimeThere" name="departureTimeThere" type="range"></input>
-                    <label className="tripTollsTimeDiscription tripTollsTimeDiscriptionBack" htmlFor="arrivalTimeThere">Время прибытия</label>
-                    <input className="tripTollsTime" onChange={handleChange} id="arrivalTimeThere" name="arrivalTimeThere" type="range"></input>
+                    <div className="tripTollsTimeDiscription">Время отбытия</div>
+                    <InputRange 
+                        maxValue={24}
+                        minValue={0}
+                        formatLabel={value => value + ":00"}
+                        value={{min: routeSet.start_departure_hour_from, max: routeSet.start_departure_hour_to}}
+                        onChange={value => handleChange('start_departure_hour', value)} 
+                    />
+                    <div className="tripTollsTimeDiscription tripTollsTimeDiscriptionBack">Время прибытия</div>
+                    <InputRange 
+                        maxValue={24}
+                        minValue={0}
+                        formatLabel={value => value + ":00"}
+                        value={{min: routeSet.start_arrival_hour_from, max: routeSet.start_arrival_hour_to}}
+                        onChange={value => handleChange('start_arrival_hour', value)} 
+                    />
                 </div>
             </div>
             <div className="tripToolsSection">
@@ -86,10 +130,22 @@ function TripTools () {
                     <div onClick={toggleVisionBack} className={visionBack ? "tripToolsSectionHeaderToggle opened" : "tripToolsSectionHeaderToggle closed"}></div>
                  </div>    
                 <div className={visionBack ? "" : "visually-hidden"}>
-                    <label className="tripTollsTimeDiscription" htmlFor="departureTimeBack">Время отбытия</label>
-                    <input className="tripTollsTime" onChange={handleChange} id="departureTimeBack" name="departureTimeBack" type="range"></input>
-                    <label className="tripTollsTimeDiscription tripTollsTimeDiscriptionBack" htmlFor="arrivalTimeBack">Время прибытия</label>
-                    <input className="tripTollsTime" onChange={handleChange} id="arrivalTimeBack" name="arrivalTimeBack" type="range"></input>
+                    <div className="tripTollsTimeDiscription">Время отбытия</div>
+                    <InputRange 
+                        maxValue={24}
+                        minValue={0}
+                        formatLabel={value => value + ":00"}
+                        value={{min: routeSet.end_departure_hour_from, max: routeSet.end_departure_hour_to}}
+                        onChange={value => handleChange('end_departure_hour', value)} 
+                    />
+                    <div className="tripTollsTimeDiscription tripTollsTimeDiscriptionBack">Время прибытия</div>
+                    <InputRange 
+                        maxValue={24}
+                        minValue={0}
+                        formatLabel={value => value + ":00"}
+                        value={{min: routeSet.end_arrival_hour_from, max: routeSet.end_arrival_hour_to}}
+                        onChange={value => handleChange('end_arrival_hour', value)} 
+                    />
                 </div>
             </div>
         </form>

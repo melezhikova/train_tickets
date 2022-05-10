@@ -2,7 +2,11 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { changeCityField, fetchCities, fetchRoutes, setRouteSetting, swapCities } from "../actions/actionCreators";
 import { useEffect, useState } from "react";
-import { format } from "date-fns";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { registerLocale } from  "react-datepicker";
+import ru from 'date-fns/locale/ru';
+registerLocale('ru', ru);
 
 
 function HeaderForm (props) {
@@ -21,6 +25,7 @@ function HeaderForm (props) {
             if (fromCityInList !== -1) {
                 const fromCityId = citiesListFrom[fromCityInList]._id;
                 dispatch(setRouteSetting('from_city_id', fromCityId));
+                localStorage.setItem('from_city_id', fromCityId);
             }
         }
         if (citiesListTo.length > 0) {
@@ -28,9 +33,10 @@ function HeaderForm (props) {
             if (toCityInList !== -1) {
                 const toCityId = citiesListTo[toCityInList]._id;
                 dispatch(setRouteSetting('to_city_id', toCityId));
+                localStorage.setItem('to_city_id', toCityId);
             }
         }
-    },[citiesListFrom, citiesListTo, cityFrom, cityTo])
+    },[citiesListFrom, citiesListTo, cityFrom, cityTo, dispatch])
 
     const handleSubmit = evt => {
         evt.preventDefault();
@@ -52,12 +58,6 @@ function HeaderForm (props) {
         }
 
     };
-
-    const handleChangeDate = evt => {
-        const {name, value} = evt.target;
-        const newValue = format(new Date(value), 'yyyy-MM-dd');
-        dispatch(setRouteSetting(name, newValue));
-    }
 
     const swapDirection = () => {
         dispatch(swapCities());
@@ -99,12 +99,28 @@ function HeaderForm (props) {
                 </div>
                 <div>
                     <div className="formDiscription">Дата</div>
-                    <div className="inputGroup">
+                    <div className="inputGroup">   
                         <div className="dateInput">
-                            <input onChange={handleChangeDate} type="date" name="date_start" value={routeSet.date_start} className="formControl" placeholder="ДД/ММ/ГГ" />
+                            <DatePicker 
+                                dateFormat="yyyy-MM-dd"
+                                locale="ru" 
+                                selected={routeSet.date_start} 
+                                onChange={(date) => dispatch(setRouteSetting("date_start", date))}
+                                className="formControl" 
+                                placeholderText={"ДД/ММ/ГГ"} 
+                                shouldCloseOnSelect={false}
+                            />
                         </div>
                         <div className="dateInput">
-                            <input onChange={handleChangeDate} type="date" name="date_end" value={routeSet.date_end} className="formControl" placeholder="ДД/ММ/ГГ" />
+                            <DatePicker 
+                                dateFormat="yyyy-MM-dd"
+                                locale="ru" 
+                                selected={routeSet.date_end} 
+                                onChange={(date) => dispatch(setRouteSetting("date_end", date))} 
+                                className="formControl" 
+                                placeholderText={"ДД/ММ/ГГ"} 
+                                shouldCloseOnSelect={false}
+                            />
                         </div>
                     </div>
                 </div>

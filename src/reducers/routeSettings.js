@@ -8,8 +8,8 @@ import {
 
 const initialState = {
     routeSet: {
-        from_city_id: '',
-        to_city_id: '',
+        from_city_id: localStorage.getItem('from_city_id') ? localStorage.getItem('from_city_id') : '',
+        to_city_id: localStorage.getItem('to_city_id') ? localStorage.getItem('to_city_id') : '',
         date_start: '',
         date_end: '',
         date_start_arrival: null,
@@ -21,16 +21,16 @@ const initialState = {
         have_wifi: false,
         have_air_conditioning: false,
         have_express: false,
-        price_from: '',
-        price_to: '',
-        start_departure_hour_from: '0:00',
-        start_departure_hour_to: '24:00',
-        start_arrival_hour_from: '0:00',
-        start_arrival_hour_to: '24:00',
-        end_departure_hour_from: '0:00',
-        end_departure_hour_to: '24:00',
-        end_arrival_hour_from: '0:00',
-        end_arrival_hour_to: '24:00',
+        price_from: 0,
+        price_to: 10000,
+        start_departure_hour_from: 0,
+        start_departure_hour_to: 24,
+        start_arrival_hour_from: 0,
+        start_arrival_hour_to: 24,
+        end_departure_hour_from: 0,
+        end_departure_hour_to: 24,
+        end_arrival_hour_from: 0,
+        end_arrival_hour_to: 24,
         limit: 5,
         offset: 0,
         sort: 'date',
@@ -50,6 +50,7 @@ export default function routeSettingsReducer(state = initialState, action) {
         
         case SET_ROUTE_SETTING:
             const { name, value } = action.payload;
+            console.log(name, value);
             return {
                 ...state,
                 routeSet: {

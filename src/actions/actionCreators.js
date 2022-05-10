@@ -15,6 +15,7 @@ import {
     FETCH_ROUTES_SUCCESS, 
     SET_CURRENT_PAGE, 
     SET_ROUTE_SETTING, 
+    SET_TRAIN, 
     SWAP_CITIES 
 } from "./actionTypes";
 
@@ -122,6 +123,13 @@ export const setCurrentPage = number => ({
     },
 });
 
+export const setTrain = route => ({
+    type: SET_TRAIN,
+    payload: {
+        route,
+    },
+});
+
 
 export const fetchCities = (nameList, search) => async (dispatch) => {
     dispatch(fetchCitiesRequest());
@@ -144,7 +152,7 @@ export const fetchRoutes = data => async (dispatch) => {
         let dataUrl = '';
         for (let item in data) {
             let value = data[item];
-            if (value && value !== '0:00' && value !== '24:00') {
+            if (value && value !== 0 && value !== 24) {
                 dataUrl += `&${item}=${value}&`;
             }
         }
