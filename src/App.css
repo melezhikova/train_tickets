@@ -392,6 +392,7 @@ div.react-datepicker__day--selected {
     display: flex;
     padding: 60px 50px;
     justify-content: center;
+    cursor: pointer;
 }
 
 .reviewControl {
@@ -435,7 +436,7 @@ div.react-datepicker__day--selected {
 
 .stageNumber {
     width: 56px;
-    font-size: 1.5em;
+    font-size: 39px;
     color: #FFFFFF;
     text-align: center;
     border: 3px solid #FFFFFF;
@@ -924,11 +925,18 @@ span.input-range__label--value {
 .routes_yellowArrowPic {
     width: 30px;
     height: 20px;
-    background-image: url('../src/img/routes/vector.png');
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
     margin: auto;
+}
+
+.routes_yellowArrowPic_trainStart {
+    background-image: url('../src/img/routes/start.png');
+}
+
+.routes_yellowArrowPic_trainEnd {
+    background-image: url('../src/img/routes/end.png');
 }
 
 .routes_seats {
@@ -1056,12 +1064,18 @@ span.input-range__label--value {
 
 /*seats*/
 
+.seats {
+    display: flex;
+    flex-direction: column;
+}
+
 .sectionSeats {
     margin-top: 0;
     margin-bottom: 48px;
 }
 
 .seatsBtn {
+    align-self: flex-end;
     margin-top: 70px;
     text-transform: uppercase;
     padding: 16px 70px;
@@ -1107,7 +1121,353 @@ span.input-range__label--value {
     border: 1px solid #292929;
     border-radius: 5px;
     background-color: #FFFFFF;
-    padding: 16px 34px;
+    padding: 15px 34px;
+    margin: 0 10px;
+}
+
+.train_header {
+    font-weight: 700;
+    font-size: 1.25em;
+    color: #292929;
+    padding: 40px 0 15px 20px;
+}
+
+.train_typesContainer {
+    display: flex;
+    padding: 10px 30px 25px;
+}
+
+.train_typesItem {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+}
+
+.train_typesPic {
+    width: 50px;
+    height: 50px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 20px;
+}
+
+.train_typesPic_fourth {
+    background-image: url('../src/img/train/fourthClass.png');
+}
+
+.train_typesPic_third {
+    background-image: url('../src/img/train/thirdClass.png');
+}
+
+.train_typesPic_second {
+    background-image: url('../src/img/train/secondClass.png');
+}
+
+.train_typesPic_first {
+    background-image: url('../src/img/train/firstClass.png')
+}
+
+.train_typesPic_fourthActive {
+    background-image: url('../src/img/train/fourthClassActive.png');
+}
+
+.train_typesPic_thirdActive {
+    background-image: url('../src/img/train/thirdClassActive.png');
+}
+
+.train_typesPic_secondActive {
+    background-image: url('../src/img/train/secondClassActive.png');
+}
+
+.train_typesPic_firstActive {
+    background-image: url('../src/img/train/firstClassActive.png')
+}
+
+.train_typesName {
+    font-size: 1em;
+    color: #928F94;
+}
+
+.seats_coaches {
+    height: 37px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 30px;
+    background: rgba(255, 168, 0, 0.44);
+}
+
+.seats_coachesNumbers {
+    display: flex;
+    font-size: 0.75em;
+}
+
+.seats_coachNumber {
+    color: #2D2B2F;
+    font-weight: 700;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.seats_coachNumberActive {
+    color: #FFFFFF;
+}
+
+.seats_coachesText {
+    font-size: 0.67em;
+}
+
+/*TrainDetails*/
+
+.train_routeContainer {
+    display: flex;
+    background: #F7F6F6;
+    align-items: center;
+}
+
+.train_routeTrainPic {
+    width: 30px;
+    height: 30px;
+    background-image: url('../src/img/train/train.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin: 0 25px;
+}
+
+.train_routePath {
+    margin: 15px 20px 15px 0;
+}
+
+.train_routeName {
+    font-weight: 700;
+}
+
+.train_routeItinerary {
+    font-size: 0.67em;
+    line-height: 0.89em;
+    color: #292929;
+    text-transform: capitalize;
+    margin-top: 5px;
+}
+
+.train_routeDetails {
+    display: flex;
+    margin-right: 20px;
+    width: 50%;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+    padding: 30px;
+}
+
+.train_duration {
+    display: flex;
+    align-items: center;
+    width: 25%;
+    padding-left: 30px;
+}
+
+.train_watch {
+    width: 30px;
+    height: 30px;
+    background-image: url('../src/img/train/watch.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-right: 10px;
+}
+
+.train_durationTime {
+    font-size: 0.75em;
+}
+
+/*TrainTicketsQuantity*/
+
+.train_quantityBox {
+    display: flex;
+    width: 100%;
+    padding-bottom: 50px;
+    border-bottom: 1px dashed #C4C4C4;
+}
+
+.train_quantityItem {
+    width: 33.3%;
+    padding: 20px;
+    border: 1px solid transparent;
+}
+
+.train_quantityItem:hover {
+    border: 1px solid rgba(255, 168, 0, 0.79);
+}
+
+.train_quantityItem_adult {
+    background: #F7F6F6;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.train_quantityItemBox {
+    display: flex;
+    background: #FFFFFF;
+    border: 1px solid #928F94;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 0 auto 23px;
+}
+
+.train_quantityItemSign {
+    font-size: 0.75em;
+    color: #292929;
+}
+
+.train_quantityItemInput {
+    width: 40px;
+    font-size: 0.75em;
+    border: none;
+    color: #292929;
+    outline: none;
+}
+
+.train_quantityItemText {
+    font-size: 0.67em;
+    color: #000000;
+}
+
+.train_quantityItemTextChild {
+    font-size: 0.67em;
+    color: #928F94;
+}
+
+/*TrainCoach*/
+.seats_coachDetails {
+    display: flex;
+    justify-content: space-between;
+}
+
+.seats_coachDetails_coach {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #FFD98F;
+    padding: 30px 0 0 30px;
+}
+
+.seats_coachDetails_coachNumber {
+    font-weight: 700;
+    font-size: 3em;
+    color: #292929;
+}
+
+.seats_coachDetails_itemHeader {
+    display: flex;
+    font-size: 0.75em;
+    color: #928F94;
+    margin: 30px 0 20px 0;
+}
+
+.seats_coachDetails_itemHeader_text {
+    color: #C4C4C4;
+    margin-left: 10px;
+}
+
+.seats_coachDetails_itemNumber {
+    margin-left: 10px;
+    color: #292929;
+}
+
+.seats_coachDetails_itemText {
+    display: flex;
+    align-items: center;
+    color: #000000;
+    margin-bottom: 20px;
+}
+
+.seats_coachDetails_itemText_quantity {
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.seats_coachDetails_price {
+    font-weight: 700;
+    margin-right: 10px;
+}
+
+.seats_coachDetails_servises {
+    display: flex;
+}
+
+.seats_coachDetails_serviceBox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 36px;
+    height: 34.11px;
+    border: 1px solid #292929;
+    border-radius: 5px;
+}
+
+.seats_coachDetails_serviceBox_active {
+    background: #FDB935;
+    border: none;
+}
+
+.seats_coachDetails_serviceBox:nth-child(n + 2) {
+    margin-left: 12px;
+}
+
+.seats_coachDetails_serviceBox:hover {
+    background: #FFA800;
+}
+
+.serviceBox_notActive {
+    background: #FCDC9D;
+    border: none;
+    border-radius: 5px;
+}
+
+.seats_coachDetails_servicePic, .seats_coachDetails_servicePic_notActive {
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.seats_coachDetails_servicePic_notActive {
+    opacity: 0.2;
+}
+
+.servicePic_air_conditioning {
+    background-image: url('../src/img/services/air_conditioning_black.png');
+}
+
+.servicePic_air_conditioning_active {
+    background-image: url('../src/img/services/air_conditioning_white.png');
+}
+
+.servicePic_wifi {
+    background-image: url('../src/img/services/wifi_black.png');
+}
+
+.servicePic_wifi_active {
+    background-image: url('../src/img/services/wifi_white.png');
+}
+
+.servicePic_linen {
+    background-image: url('../src/img/services/linens_black.png');
+}
+
+.servicePic_linen_active {
+    background-image: url('../src/img/services/linens_white.png');
+}
+
+.servicePic_food {
+    background-image: url('../src/img/services/food_black.png');
+}
+
+.servicePic_food_active {
+    background-image: url('../src/img/services/food_white.png');
 }
 
 

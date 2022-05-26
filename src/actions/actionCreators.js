@@ -1,6 +1,7 @@
 import { 
     CHANGE_CITY_FIELD, 
     CHANGE_EMAIL_FIELD, 
+    CHANGE_QUANTITY_FIELD, 
     FETCH_CITIES_FAILURE, 
     FETCH_CITIES_REQUEST, 
     FETCH_CITIES_SUCCESS, 
@@ -13,6 +14,9 @@ import {
     FETCH_ROUTES_FAILURE, 
     FETCH_ROUTES_REQUEST, 
     FETCH_ROUTES_SUCCESS, 
+    FETCH_SEATS_FAILURE, 
+    FETCH_SEATS_REQUEST, 
+    FETCH_SEATS_SUCCESS, 
     SET_CURRENT_PAGE, 
     SET_ROUTE_SETTING, 
     SET_TRAIN, 
@@ -130,6 +134,32 @@ export const setTrain = route => ({
     },
 });
 
+export const fetchSeatsRequest = () => ({
+    type: FETCH_SEATS_REQUEST,
+});
+  
+export const fetchSeatsFailure = error => ({
+    type: FETCH_SEATS_FAILURE,
+    payload: {
+        error,
+    },
+});
+  
+export const fetchSeatsSuccess = (data) => ({
+    type: FETCH_SEATS_SUCCESS,
+    payload: {
+        data,
+    },
+});
+
+export const changeQuantityField = (name, value) => ({
+    type: CHANGE_QUANTITY_FIELD,
+    payload: {
+        name,
+        value,
+    },
+});
+
 
 export const fetchCities = (nameList, search) => async (dispatch) => {
     dispatch(fetchCitiesRequest());
@@ -197,5 +227,27 @@ export const fetchEmail = email => async (dispatch) => {
         dispatch(fetchEmailSuccess());
     } catch (e) {
         dispatch(fetchEmailFailure(e.message));
+    }
+}
+
+export const fetchSeats = (id, data) => async (dispatch) => {
+    dispatch(fetchSeatsRequest());
+    try {
+        let dataUrl = '';
+        for (let item in data) {
+            let value = data[item];
+            if (value && value !== 0 && value !== 24) {
+                dataUrl += `&${item}=${value}&`;
+            }
+        }
+        const response = await fetch(`${process.env.REACT_APP_API_URL}routes/${id}/seats?${dataUrl}`);
+        if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+    const reguest = await response.json();
+    console.log(reguest);
+    dispatch(fetchSeatsSuccess(reguest));
+    } catch (e) {
+        dispatch(fetchSeatsFailure(e.message));
     }
 }

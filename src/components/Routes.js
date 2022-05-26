@@ -25,7 +25,7 @@ function Routes () {
                 <div className="routes_routeContainer" key={o.departure._id}>
                     <div className="routes_routeContainerLeftSide">
                         <div className="routes_routeTrainPicBorder">
-                            <div className="routes_routeTrainPic"></div>
+                            <div className="routes_routeTrainPic routes_routeTrainPic_trainStart"></div>
                         </div>
                         <div className="routes_routeName">{o.departure.train.name}</div>
                         <div className="routes_routeItinerary">

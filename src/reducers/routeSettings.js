@@ -47,7 +47,6 @@ const initialState = {
 export default function routeSettingsReducer(state = initialState, action) {
     const { routeSet } = state;
     switch (action.type) {
-        
         case SET_ROUTE_SETTING:
             const { name, value } = action.payload;
             console.log(name, value);
@@ -92,7 +91,6 @@ export default function routeSettingsReducer(state = initialState, action) {
                 },
                 loadingStatus: 'success',
             };
-
         default:
             return state;
     }

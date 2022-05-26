@@ -8,7 +8,7 @@ function AvailableSeats (props) {
                 <div className="seatsQuantity">{quantity}</div>
                 <div className="seatsPrice">
                     <div>от</div>
-                    <div className="seatsPriceFigure">{price}</div>
+                    <div className="seatsPriceFigure">{price.toLocaleString()}</div>
                     <div className="seatsPriceСurrency"></div>
                 </div>
             </div>

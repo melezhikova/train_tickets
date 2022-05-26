@@ -9,7 +9,7 @@ function LastRoutes () {
 
     useEffect(() => {
         console.log(lastRoutes);
-        dispatch(fetchLastRoutes()).then (console.log(lastRoutes));
+        dispatch(fetchLastRoutes());
     },[]);
 
     return (
@@ -30,7 +30,7 @@ function LastRoutes () {
                             <div className="lastRouteDetailsPics"></div>
                             <div className="lastRouteDetailsPrice">
                                 <div>от</div>
-                                <div className="lastRouteDetailsPriceFigure">{o.min_price}</div>
+                                <div className="lastRouteDetailsPriceFigure">{o.min_price.toLocaleString()}</div>
                                 <div className="lastRouteDetailsPriceСurrency"></div>
                             </div>
                         </div>
