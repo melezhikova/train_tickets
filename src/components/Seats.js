@@ -29,7 +29,7 @@ function Seats () {
     },[route, routeSet, dispatch])
 
     const goNext = () => {
-
+        navigate("/passengers");
     }
 
     return (
@@ -46,7 +46,9 @@ function Seats () {
                         <div className="sectionHeader sectionSeats">выбор мест</div>
                         <Train direction="trainStart" />
                         <Train direction="trainEnd" />
-                        <button onClick={goNext} className="routesBtn seatsBtn btn">далее</button>
+                        <div className="btnBox">
+                            <button onClick={goNext} className="yellowBtn seatsBtn">ДАЛЕЕ</button>
+                        </div>
                     </section>
                 </aside>
             </main>

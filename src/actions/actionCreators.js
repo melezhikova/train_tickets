@@ -2,6 +2,7 @@ import {
     CHANGE_CITY_FIELD, 
     CHANGE_EMAIL_FIELD, 
     CHANGE_QUANTITY_FIELD, 
+    CHANGE_USER_FIELD, 
     FETCH_CITIES_FAILURE, 
     FETCH_CITIES_REQUEST, 
     FETCH_CITIES_SUCCESS, 
@@ -18,6 +19,7 @@ import {
     FETCH_SEATS_REQUEST, 
     FETCH_SEATS_SUCCESS, 
     SET_CURRENT_PAGE, 
+    SET_PASSENGER, 
     SET_ROUTE_SETTING, 
     SET_TRAIN, 
     SWAP_CITIES 
@@ -159,6 +161,22 @@ export const changeQuantityField = (name, value) => ({
         value,
     },
 });
+
+export const setPassenger = passenger => ({
+    type: SET_PASSENGER,
+    payload: {
+        passenger,
+    },
+});
+
+export const changeUserField = (name, value) => ({
+    type: CHANGE_USER_FIELD,
+    payload: {
+        name,
+        value,
+    },
+});
+
 
 
 export const fetchCities = (nameList, search) => async (dispatch) => {

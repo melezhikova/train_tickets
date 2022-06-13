@@ -4,7 +4,7 @@ import Menu from "./Menu";
 function SecondaryHeader () {
     return (
         <header className="secondaryHeader">
-            <div className="logo">Лого</div>
+            <a href="/#logo" id="logo" className="logo">Лого</a>
             <Menu />
             <div className="SecondaryHeaderContainer">
                 <HeaderForm typeForm="secondaryHeaderForm" lines="inOneLine"/>

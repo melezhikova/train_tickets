@@ -15,6 +15,12 @@ function TrainCoach (props) {
         linens: false,
         food: false,
     })
+    const [ vision, setVision ] = useState({
+        air_conditioning: false,
+        wifi: false,
+        linens: false,
+        food: false,
+    })
 
     useEffect(() => {
         let bottom = 0;
@@ -50,6 +56,11 @@ function TrainCoach (props) {
         if (type === "first" && service === 'food') {
             setServices(prevState => (services[service] === false ? {...prevState, [service]: true} : {...prevState, [service]: false}))
         }
+    }
+
+    const toggleVision = service => {
+        console.log(vision[service]);
+        setVision(prevState => (vision[service] === false ? {...prevState, [service]: true} : {...prevState, [service]: false}))
     }
 
     return (
@@ -94,22 +105,30 @@ function TrainCoach (props) {
                 </div>
                 <div className="seats_coachDetails_servises">
                     <div onClick={() => handleChange('air_conditioning')} className={type === "first" ? "seats_coachDetails_serviceBox serviceBox_notActive" :
-                        services.air_conditioning ? "seats_coachDetails_serviceBox seats_coachDetails_serviceBox_active" : "seats_coachDetails_serviceBox"}>
+                    services.air_conditioning ? "seats_coachDetails_serviceBox seats_coachDetails_serviceBox_active" : "seats_coachDetails_serviceBox"}
+                    onMouseEnter={() => toggleVision('air_conditioning')} onMouseLeave={() => toggleVision('air_conditioning')}>
                         <div className={type === "first" ? "seats_coachDetails_servicePic_notActive servicePic_air_conditioning" :
-                            services.air_conditioning ? "seats_coachDetails_servicePic servicePic_air_conditioning_active" : "seats_coachDetails_servicePic servicePic_air_conditioning"}></div>
+                        services.air_conditioning ? "seats_coachDetails_servicePic servicePic_air_conditioning_active" : "seats_coachDetails_servicePic servicePic_air_conditioning"}></div>
+                        {vision.air_conditioning && <div className="tipBox tipBox_services">кондиционер</div>}
                     </div>
                     <div onClick={() => handleChange('wifi')} className={type === "first" ? "seats_coachDetails_serviceBox serviceBox_notActive" :
-                        services.wifi ? "seats_coachDetails_serviceBox seats_coachDetails_serviceBox_active" : "seats_coachDetails_serviceBox"}>
+                    services.wifi ? "seats_coachDetails_serviceBox seats_coachDetails_serviceBox_active" : "seats_coachDetails_serviceBox"}
+                    onMouseEnter={() => toggleVision('wifi')} onMouseLeave={() => toggleVision('wifi')}>
                         <div className={type === "first" ? "seats_coachDetails_servicePic_notActive servicePic_wifi" :
-                            services.wifi ? "seats_coachDetails_servicePic servicePic_wifi_active" : "seats_coachDetails_servicePic servicePic_wifi"}></div>
+                        services.wifi ? "seats_coachDetails_servicePic servicePic_wifi_active" : "seats_coachDetails_servicePic servicePic_wifi"}></div>
+                        {vision.wifi && <div className="tipBox tipBox_services">WI&#8209;FI</div>}
                     </div>
                     <div onClick={() => handleChange('linens')} className={type === "first" ? "seats_coachDetails_serviceBox serviceBox_notActive" :
-                        services.linens ? "seats_coachDetails_serviceBox seats_coachDetails_serviceBox_active" : "seats_coachDetails_serviceBox"}>
+                    services.linens ? "seats_coachDetails_serviceBox seats_coachDetails_serviceBox_active" : "seats_coachDetails_serviceBox"}
+                    onMouseEnter={() => toggleVision('linens')} onMouseLeave={() => toggleVision('linens')}>
                         <div className={type === "first" ? "seats_coachDetails_servicePic_notActive servicePic_linen" :
-                            services.linens ? "seats_coachDetails_servicePic servicePic_linen_active" : "seats_coachDetails_servicePic servicePic_linen"}></div>
+                        services.linens ? "seats_coachDetails_servicePic servicePic_linen_active" : "seats_coachDetails_servicePic servicePic_linen"}></div>
+                        {vision.linens && <div className="tipBox tipBox_services">белье</div>}
                     </div>
-                    <div onClick={() => handleChange('food')} className={services.food ? "seats_coachDetails_serviceBox seats_coachDetails_serviceBox_active" : "seats_coachDetails_serviceBox"}>
+                    <div onClick={() => handleChange('food')} className={services.food ? "seats_coachDetails_serviceBox seats_coachDetails_serviceBox_active" : "seats_coachDetails_serviceBox"}
+                    onMouseEnter={() => toggleVision('food')} onMouseLeave={() => toggleVision('food')}>
                         <div className={services.food ? "seats_coachDetails_servicePic servicePic_food_active" : "seats_coachDetails_servicePic servicePic_food"}></div>
+                        {vision.food && <div className="tipBox tipBox_services">питание</div>}
                     </div>
                 </div>
             </div>

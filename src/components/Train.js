@@ -47,7 +47,10 @@ function Train (props) {
     const chooseCoach = nmb => {
         setChoosenCoaches(prevState => {
             console.log(prevState);
-            prevState.push(seats.find(item => item.coach.name === nmb));
+            const index = prevState.findIndex(item => item.coach.name === nmb);
+            if (index === -1) { 
+                prevState.push(seats.find(item => item.coach.name === nmb));
+            }
             return [...prevState];
         });
     }
@@ -56,7 +59,7 @@ function Train (props) {
         <div className="train">
             <div className={`header_${direction}`}>
                 <div className={`headerPic_${direction}`}></div>
-                <button onClick={changeTrain} className="changeTrainBtn btn">Выбрать другой поезд</button>
+                <button onClick={changeTrain} className="whiteBtn">Выбрать другой поезд</button>
             </div>
             <TrainDetails direction={direction} />
             <div className="train_header">Количество билетов</div>  
@@ -92,7 +95,7 @@ function Train (props) {
                         <div className="seats_coachesText">Нумерация вагонов начинается с головы поезда</div>
                     </div>
                     {choosenCoaches.length > 0 && 
-                        choosenCoaches.map(o => <TrainCoach coach={o} type={type} />)
+                        choosenCoaches.map(o => <TrainCoach key={o.coach._id} coach={o} type={type} />)
                     }
                 </div>
             }

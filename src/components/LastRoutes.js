@@ -8,7 +8,6 @@ function LastRoutes () {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(lastRoutes);
         dispatch(fetchLastRoutes());
     },[]);
 

@@ -1,3 +1,13 @@
+@font-face {
+    font-family: 'Roboto';
+    src: url('../src/fonts/Roboto.ttf');
+}
+
+@font-face {
+    font-family: 'Roboto-Thin';
+    src: url('../src/fonts/Roboto-Thin.ttf');
+}
+
 body {
     font-family: 'Roboto';
     font-style: normal;
@@ -14,6 +24,101 @@ body {
     clip: rect(1px, 1px, 1px, 1px);
     position: absolute;
 }
+
+/*buttons*/
+
+.btnBox {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.personInfo_btnBox {
+    padding: 37px 30px 28px;
+}
+
+.yellowBtn {
+    font-size: 1em;
+    font-weight: 700;
+    text-align: center;
+    background-color: #FFA800;
+    border: none;
+    border-radius: 5px;
+    padding: 16px 68px;
+    cursor: pointer;
+}
+
+.yellowBtn:hover {
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.yellowBtn:active {
+    color: #FFA800;
+    background: #FFFFFF;
+    border: 1px solid #FFA800;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.yellowBtn:disabled {
+    background: #928F94;
+}
+
+.searchBtn {
+    color: #292929;
+}
+
+.routesBtn {
+    color: #FFFFFF;
+    padding: 6px 15px;
+}
+
+.seatsBtn {
+    color: #FFFFFF;
+    margin-top: 70px;
+}
+
+.subscriptionButton {
+    color: #FFFFFF;
+    margin-left: 1.375em;
+    padding: 0.7em 15px;
+    border: 1px solid #FFFFFF;
+    border-radius: 3px;
+    background-color: #2D2B2F;
+}
+
+.subscriptionButton:hover {
+    color: #2D2B2F;
+    background: #FFCA62;
+    border: 1px solid #FFCA62;
+}
+
+.subscriptionButton:active {
+    color: #2D2B2F;
+    background: #FFFFFF;
+    border: 1px solid #FFFFFF;
+}
+
+.whiteBtn {
+    font-size: 1em;
+    font-weight: 700;
+    border: 1px solid #292929;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    padding: 15px 34px;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.whiteBtn:hover {
+    color: #FFA800;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.whiteBtn:active {
+    color: #292929;
+    background: #FFA800;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
 
 /*header*/
 
@@ -32,11 +137,14 @@ body {
 }
 
 .logo {
+    display: block;
+    text-decoration: none;
     font-weight: 900;
     font-size: 1.5em;
     color: #E5E5E5; 
     padding: 15px 13%;
     background: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
 }
 
 .mainMenu {
@@ -62,6 +170,7 @@ body {
 }
 
 .slogan {
+    font-family: 'Roboto-Thin';
     font-weight: 100;
     font-size: 3em;
     color: #FFFFFF;
@@ -69,6 +178,7 @@ body {
 }
 
 .bold {
+    font-family: 'Roboto';
     font-weight: 700;
 }
 
@@ -98,6 +208,7 @@ body {
 }
 
 .formDiscription {
+    font-family: 'Roboto-Thin';
     font-weight: 300;
     font-size: 1.25em;
     line-height: 2.2em;
@@ -136,8 +247,12 @@ body {
     z-index: 99;
 }
 
+.inOneLine .dateInput {
+    margin-left: 24px;
+}
+
 .dateInput:nth-child(n + 2) {
-    margin-left: 1.6em;
+    margin-left: 24px;
 }
 
 div.react-datepicker__header {
@@ -168,6 +283,7 @@ div.react-datepicker__day--selected {
 }
 
 .formControl {
+    width: 100%;
     font-family: 'Roboto';
     color: #292929;
     font-weight: 400;
@@ -175,7 +291,7 @@ div.react-datepicker__day--selected {
     text-transform: capitalize;
     background: #FFFFFF;
     border-radius: 3px;
-    padding: 0.8em 2.9em 0.45em 0.875em;
+    padding: 14px 35px 8px 15px;
     outline: none;
 }
 
@@ -190,7 +306,7 @@ div.react-datepicker__day--selected {
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    margin: 0.3em;
+    margin: 0.3em 2.5px;
 }
 
 .directionsList {
@@ -212,33 +328,6 @@ div.react-datepicker__day--selected {
     font-variant: small-caps;
     color: #292929;
     cursor: pointer;
-}
-
-.btnBox {
-    display: flex;
-    justify-content: flex-end;
-}
-
-.searchBtn {
-    font-size: 1em;
-    font-weight: 700;
-    text-align: center;
-    text-transform: uppercase;
-    color: #292929;
-    background: #FFA800;
-    border-radius: 5px;
-    padding: 16px 68px;
-}
-
-.btn:hover {
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-}
-
-.btn:active {
-    color: #FFA800;
-    background: #E5E5E5;
-    border: 1px solid #FFA800;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 /*about*/
@@ -266,7 +355,7 @@ div.react-datepicker__day--selected {
     background-size: cover;
     background-repeat: no-repeat;
     position: relative;
-    padding: 60px 15%;
+    padding: 60px 10%;
 }
 
 .howItWorksContainer {
@@ -283,16 +372,28 @@ div.react-datepicker__day--selected {
 
 .howItWorksLink {
     color: #FFFFFF;
-    padding: 1em 4%;
+    font-weight: 700;
+    padding: 15px 70px;
     border: 1px solid #FFFFFF;
     border-radius: 5px;
     text-decoration: none;
+    cursor: pointer;
+}
+
+.howItWorksLink:hover {
+    color: #2D2B2F;
+    background: #FFCA62;
+}
+
+.howItWorksLink:active {
+    color: #2D2B2F;
+    background: #FFFFFF;
 }
 
 .benefitsBox {
     display: flex;
     justify-content: space-between;
-    padding: 3em 13%;
+    padding: 3em 10%;
 }
 
 .benefit {
@@ -325,7 +426,7 @@ div.react-datepicker__day--selected {
 }
 
 .benefitDiscription {
-    width: 9em;
+    width: 226px;
     text-align: center;
 }
 
@@ -365,14 +466,15 @@ div.react-datepicker__day--selected {
 }
 
 .author1 {
-    background-image: url('../src/img/author1.jpg');
+    background-image: url('../src/img/review/author1.jpg');
 }
 
 .author2 {
-    background-image: url('../src/img/author2.jpg');
+    background-image: url('../src/img/review/author2.jpg');
 }
 
 .reviewBox {
+    position: relative;
     width: 66%;
     font-size: 0.75em;
     margin-left: 24px;
@@ -383,9 +485,26 @@ div.react-datepicker__day--selected {
     margin-bottom: 24px;
 }
 
+.quotationStart {
+    position: absolute;
+    top: 40px;
+    left: -15px;
+    width: 16px;
+    height: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../src/img/review/quotationStart.png');
+}
+
+.quotationEnd {
+    height: 10px;
+    margin-left: 10px;
+}
+
 .reviewText {
-    font-weight: 300;
+    font-family: 'Roboto-Thin';
     font-style: italic;
+    font-size: 0.9em;
 }
 
 .reviewsControls {
@@ -419,6 +538,10 @@ div.react-datepicker__day--selected {
     background-color: #3E3C41;
 }
 
+.stageBarFull {
+    background-color: #FFA800;
+}
+
 .stageItem {
     display: flex;
     font-weight: 700;
@@ -445,18 +568,17 @@ div.react-datepicker__day--selected {
 
 .stageName {
     color: #FFFFFF;
-    font-size: 1.25em;
-    margin: 0.25em 0 0 20px;
+    font-size: 30px;
+    margin: 6px 30px 0 20px;
 }
 
 .stageArrow {
     width: 38px;
-    height: calc(1.5em + 46px);
+    height: 93.5px;
     background-image: url('../src/img/arrow.png');
     background-position: center;
     background-size: contain;
-    background-repeat: no-repeat;
-    
+    background-repeat: no-repeat; 
 }
 
 .stageArrowActive {
@@ -465,6 +587,10 @@ div.react-datepicker__day--selected {
     border: 45px solid transparent;
     border-left-color: #FFA800;
     border-right: 0;
+}
+
+.stageArrowPrev {
+    background-color: #FFA800;
 }
 
 /*Tickets*/
@@ -478,13 +604,13 @@ div.react-datepicker__day--selected {
 
 .leftPanel {
     width: 20%;
-    min-width: 300px;
+    min-width: 330px;
 }
 
 .rightPanel {
-    width: 75%;
-    min-width: 700px;
-    margin-left: 5%;
+    width: 77%;
+    min-width: 800px;
+    margin-left: 3%;
 }
 
 /*tripTools*/
@@ -616,14 +742,25 @@ span.input-range__label {
     color: #E5E5E5; 
 }
 
-span.input-range__label--max {
-    right: 10px;
+span.input-range__label-container {
+    width: auto;
+    background-color:  #3E3C41;
+    z-index: 99;
 }
+
+span.input-range__label--max {
+    right: 1.5px;
+} 
+
+span.input-range__label--min {
+    left: 1.5px;
+} 
 
 span.input-range__label--value {
     top: 5px;
     font-size: 16px;
     color: #E5E5E5;
+    z-index: 99;
 }
 
 .tripToolsSectionHeader {
@@ -638,7 +775,7 @@ span.input-range__label--value {
     align-items: center;
 }
 
-.tripToolsSectionHeaderPicThere, .tripToolsSectionHeaderPicBack {
+.tripToolsSectionHeaderPicThere, .tripToolsSectionHeaderPicBack, .tripToolsSectionHeaderPicPassenger {
     width: 36px;
     height: 26px;
     background-position: center;
@@ -721,6 +858,7 @@ span.input-range__label--value {
 .lastRouteCities, .lastRouteStations, .lastRouteDetails {
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
 }
 
 .lastRouteCities {
@@ -734,6 +872,13 @@ span.input-range__label--value {
     font-size: 0.67em;
     color: #928F94;
     margin-bottom: 30px;
+}
+
+.lastRouteDetailsPics {
+    width: 92px;
+    height: 20px;   
+    background-position: center;
+    background-image: url('../src/img/serviceGroup.png');
 }
 
 .lastRouteDetailsPrice {
@@ -888,7 +1033,7 @@ span.input-range__label--value {
 
 .routes_timing {
     display: flex;
-    width: 65%;
+    width: 60%;
     padding: 54px 40px 0;
     margin-left: auto;
     margin-right: auto;
@@ -940,10 +1085,23 @@ span.input-range__label--value {
 }
 
 .routes_seats {
-    padding: 48px 20px 24px 34px;
+    width: 40%;
+    padding: 48px 20px 24px 30px;
 }
 
+.routesServicesPics {
+    width: 92px;
+    height: 20px;  
+    margin: 35px 0 18px auto; 
+    background-position: center;
+    background-image: url('../src/img/serviceGroup.png');
+}
+
+
+/*AvailableSeats*/
+
 .seatsBox {
+    position: relative;
     font-size: 0.67em;
     display: flex;
     justify-content: space-between;
@@ -985,15 +1143,23 @@ span.input-range__label--value {
     height: 17px;
 }
 
-.routesBtn {
-    font-weight: 700;
-    font-size: 1em;
-    text-align: center;
-    color: #FFFFFF;
-    padding: 6px 15px;
-    background-color: #FFA800;
-    border: none;
+.tipBox {
+    position: absolute;
+    top: 100%;
+    background: #E5E5E5;
     border-radius: 5px;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    padding: 20px;
+    z-index: 99;
+}
+
+.tipRow {
+    display: flex;
+    align-items: center;
+}
+
+.tipRow:nth-child(n + 2) {
+    margin-top: 20px;
 }
 
 /*pages*/
@@ -1062,7 +1228,7 @@ span.input-range__label--value {
     color: #FFFFFF;
 }
 
-/*seats*/
+/*Seats*/
 
 .seats {
     display: flex;
@@ -1074,14 +1240,8 @@ span.input-range__label--value {
     margin-bottom: 48px;
 }
 
-.seatsBtn {
-    align-self: flex-end;
-    margin-top: 70px;
-    text-transform: uppercase;
-    padding: 16px 70px;
-}
 
-/*train*/
+/*Train*/
 
 .train {
     background: #FFFFFF;
@@ -1113,16 +1273,6 @@ span.input-range__label--value {
 
 .headerPic_trainEnd {
     background-image: url('../src/img/train/end.png');
-}
-
-.changeTrainBtn {
-    font-size: 1em;
-    font-weight: 700;
-    border: 1px solid #292929;
-    border-radius: 5px;
-    background-color: #FFFFFF;
-    padding: 15px 34px;
-    margin: 0 10px;
 }
 
 .train_header {
@@ -1399,6 +1549,7 @@ span.input-range__label--value {
 }
 
 .seats_coachDetails_serviceBox {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1470,6 +1621,453 @@ span.input-range__label--value {
     background-image: url('../src/img/services/food_white.png');
 }
 
+.tipBox_services {
+    font-size: 0.67em;
+    padding: 8px 10px;
+}
+
+
+/*TripDetails*/
+
+.tripDetails {
+    width: 330px;
+    color: #E5E5E5;
+}
+
+.tripDetails .formDiscription {
+    color: #E5E5E5;
+}
+
+.tripDetails_headerText {
+    color: #FFFFFF;
+    font-size: 0.75em;
+    margin-left: 20px;
+    padding-top: 5px;
+}
+
+.tripDetails_sectionRow {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.75em;
+    margin-bottom: 20px;
+}
+
+.tripDetails_sectionRow:first-child {
+    margin-top: 40px;
+}
+
+.tripDetails_trainNumber {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1.33em;
+}
+
+.tripDetails_trainName {
+    color: #FFFFFF;
+    font-size: 0.89em;
+    font-weight: 700;
+    text-transform: capitalize;
+    text-align: right;
+}
+
+.tripDetails_duration {
+    justify-content: center;
+    margin: 45px 0 5px;
+}
+
+.tripDetails_sectionRowBoxRight {
+    text-align: right;
+}
+
+.tripDetails_trainTime {
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 1.33em;
+}
+
+.tripDetails_date {
+    color: #928F94;
+}
+
+.tripDetails_destination {
+    font-weight: 700;
+    text-transform: capitalize;
+}
+
+.tripDetails_destinationStation {
+    color: #928F94;
+}
+
+.tripToolsSectionHeaderPicPassenger {
+    background-image: url('../src/img/passenger.png');
+}
+
+.tripDetails_sectionRowPart {
+    display: flex;
+}
+
+.tripDetails_passQuantity {
+    margin-right: 5px;
+}
+
+/*PersonInfo*/
+
+.personInfo {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    margin-bottom: 45px;
+}
+
+.personInfo_header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 40px 30px 25px;
+    background: #F9F9F9;
+}
+
+.personInfo_headerBox {
+    display: flex;
+    align-items: center;
+}
+
+.personInfo_openBtnOpened, .personInfo_openBtnClosed {
+    width: 32px;
+    height: 32px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin-right: 15px;
+    cursor: pointer;
+}
+
+.personInfo_openBtnOpened {
+    background-image: url('../src/img/passenger/opened.png');
+}
+
+.personInfo_openBtnClosed {
+    background-image: url('../src/img/passenger/closed.png');
+}
+
+.personInfo_number {
+    margin-left: 5px;
+}
+
+.personInfo_closeBtn {
+    width: 12px;
+    height: 12px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../src/img/passenger/toClose.png');
+}
+
+.personInfo_form {
+    padding-top: 38px;
+    border-top: 1px dashed #928F94;
+}
+
+.personInfo_choosing {
+    position: relative;
+    width: 280px;
+    height: 50px;
+    padding: 10px 13px;
+    border: 1px solid #928F94;
+    border-radius: 5px; 
+}
+
+.personInfo_choosingArrow {
+    position: absolute;
+    top: 0;
+    right: 20px;
+    width: 11.5px;
+    height: 50px;    
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../src/img/passenger/choose.png'); 
+    cursor: pointer;
+}
+
+.personInfo_list {
+    position: absolute;
+    top: -1px;
+    left: -1px;
+    width: 280px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    background-color: #F7F5F9;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.personInfo_documentType {
+    width: auto;
+    font-size: 0.75em;
+    padding-right: 100px;
+    padding-top: 12px;
+}
+
+.personInfo_listItem {
+    padding: 7px;
+    border-bottom: 1px solid #E5E5E5;
+}
+
+.personInfo_listItem:hover {
+    color: #FFFFFF;
+    background: #FFCA62;
+}
+
+.personInfo_isAdult {
+    margin-left: 30px;
+}
+
+.personInfo_formRow {
+    display: flex;
+    padding: 0 30px;
+}
+
+.personInfo_formRowName {
+    margin: 45px 0;
+}
+
+.personInfo_nameBox {
+    width: 33%;
+}
+
+.personInfo_nameBox:nth-child(n+2) {
+    margin-left: 15px;
+}
+
+.personInfo_label {
+    display: block;
+    font-size: 0.67em;
+    color: #928F94;
+    margin-bottom: 10px;
+}
+
+.personInfo_formControl {
+    font-size: 0.75em;
+    width: 100%;
+    height: 50px;
+    padding: 12px;
+    border: 1px solid #928F94;
+    border-radius: 5px;
+    outline: none;
+}
+
+.personInfo_formControl::placeholder {
+    color: #C4C4C4;
+}
+
+.personInfo_formControlInvalid {
+    color: rgba(255, 61, 0, 0.8);
+    border: 1px solid rgba(255, 61, 0, 0.76);
+}
+
+.personInfo_chooseGender {
+    display: flex;
+    font-weight: 900;
+    font-size: 1.25em;
+    text-transform: uppercase;
+    color: #000000;
+    border: 1px solid #928F94;
+    border-radius: 5px;
+    margin: 0 35px 45px 0;
+}
+
+.personInfo_genderItem {
+    padding: 7px 30px;
+    cursor: pointer;
+}
+
+.personInfo_genderItem:first-of-type {
+    border-right: 1px solid #928F94;;
+}
+
+.personInfo_genderItemActive {
+    background: #FFA800;
+}
+
+.personInfo_checkbox {
+    width: 28px;
+    height: 28px;
+    margin: 0 20px 30px 0;
+}
+
+.personInfo_text {
+    font-size: 0.75em;
+    padding-top: 3px;
+}
+
+.personInfo_formRowDocs {
+    padding: 35px 30px;
+    border-top: 1px dashed #928F94;
+    border-bottom: 1px dashed #928F94;
+}
+
+.personInfo_docsBox {
+    margin-left: 30px;
+}
+
+.formcontrolPassort {
+    width: 205px;
+    font-size: 1em;
+    letter-spacing: 10px;
+}
+
+.formcontrolСertificate {
+    width: 207px;
+    position: relative;
+}
+
+.formcontrolСertificatePlaceholder {
+    position: absolute;
+    top: 20px;
+    left: 40px;
+    font-size: 0.67em;
+    line-height: 0.5em;
+    color: #C4C4C4;
+}
+
+.addPassenger {
+    width: 12.79px;
+    height: 12.79px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../src/img/passenger/add.png'); 
+    cursor: pointer;
+}
+
+.personInfo_btnBoxFormComplete {
+    background: #B2F6A1;
+    justify-content: space-between;
+}
+
+.personInfo_completeBox {
+    display: flex;
+    align-items: center;
+}
+
+.personInfo_errorBox {
+    display: flex;
+    align-items: center;
+    font-size: 0.75em;
+    padding: 35px 0;
+    background: rgba(255, 61, 0, 0.38);
+}
+
+.personInfo_errorPic, .personInfo_completePic {
+    width: 32px;
+    height: 32px;
+    margin: 0 16px 0 24px;
+}
+
+.personInfo_errorPic {
+    background-image: url('./img/passenger/error.png');
+}
+
+.personInfo_completePic {
+    background-image: url('./img/passenger/ok.png');
+}
+
+.personInfo_completeText {
+    color: #FFFFFF;
+    font-size: 0.75em;
+}
+
+.personInfo_example {
+    font-weight: 700;
+    margin-left: 10px;
+}
+
+.personInfo_completeBtn {
+    background: #B2F6A1;
+}
+
+/*Paying*/
+
+.payingSection {
+    padding-bottom: 80px;
+}
+
+.paying_header {
+    display: flex;
+    align-items: center;
+    padding: 30px 40px 30px 25px;
+    background: #F9F9F9;
+    border-bottom: 1px dashed #928F94;
+}
+
+.paying_header:nth-child(n + 2) {
+    border-top: 1px dashed #928F94;
+    border-bottom: none;
+}
+
+.paying_label {
+    color: #292929;
+}
+
+.paying_formRow {
+    width: 360px;
+    padding: 0 30px;
+}
+
+.paying_formRow:nth-child(2) {
+    margin: 55px 0 35px;
+}
+
+.paying_formRow:nth-child(3) {
+    margin-bottom: 90px;
+}
+
+.paying_radioRow {
+    display: flex;
+    color: #928F94;
+    padding: 50px 30px 0;
+    border-top: 1px dashed #928F94;
+}
+
+.customRadio, .customRadioChecked {
+    width: 28px;
+    height: 28px;
+    background: #FFFFFF;
+    border-radius: 5px;
+}
+
+.customRadio {
+    border: 1px solid #928F94;
+}
+
+.customRadioRed {
+    border: 1px solid rgba(255, 61, 0, 0.76);
+}
+
+.customRadioChecked {
+    border: 1px solid #FFA800;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../src/img/checked.png');
+}
+
+.paying_text {
+    margin-left: 20px;
+}
+
+.paying_textChecked {
+    color: #FFA800;
+    margin-left: 20px;
+}
+
+.paying_onlineTypes {
+    display: flex;
+    font-weight: 700;
+    padding: 30px 30px 65px;
+}
+
+.paying_onlineTypes_type {
+    width: 180px;
+}
+
 
 /*footer*/
 
@@ -1486,7 +2084,8 @@ footer {
 
 .footerContainer {
     display: flex;
-    padding: 50px 18%;
+    justify-content: space-between;
+    padding: 50px 15%;
 }
 
 .footerContactsList, .socialLink {
@@ -1524,8 +2123,9 @@ footer {
 }
 
 .footerContactsItemText {
+    font-family: 'Roboto-Thin';
     color: #FFFFFF;
-    margin-left: 1.5em;
+    margin-left: 35px;
 }
 
 .footerSubscription {
@@ -1537,6 +2137,7 @@ footer {
 }
 
 .footerFormText {
+    font-family: 'Roboto-Thin';
     display: block;
     margin-bottom: 5px;
 }
@@ -1544,27 +2145,6 @@ footer {
 .footerFormInput {
     padding: 0.7em 21px;
     border-radius: 3px;
-}
-
-.subscriptionButton {
-    color: #FFFFFF;
-    margin-left: 1.375em;
-    padding: 0.7em 15px;
-    border: 1px solid #FFFFFF;
-    border-radius: 3px;
-    background-color: #2D2B2F;
-}
-
-.subscriptionButton:hover {
-    color: #2D2B2F;
-    background: #FFCA62;
-    border: 1px solid #FFCA62;
-}
-
-.subscriptionButton:active {
-    color: #2D2B2F;
-    background: #FFFFFF;
-    border: 1px solid #FFFFFF;
 }
 
 .footer_socialLinks {

@@ -126,7 +126,7 @@ function HeaderForm (props) {
                 </div>
             </div>
             <div className="btnBox">
-                <button className="searchBtn btn">НАЙТИ БИЛЕТЫ</button>
+                <button className="yellowBtn searchBtn">НАЙТИ БИЛЕТЫ</button>
             </div>
         </form>
     )

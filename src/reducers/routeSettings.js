@@ -49,7 +49,6 @@ export default function routeSettingsReducer(state = initialState, action) {
     switch (action.type) {
         case SET_ROUTE_SETTING:
             const { name, value } = action.payload;
-            console.log(name, value);
             return {
                 ...state,
                 routeSet: {

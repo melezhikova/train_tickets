@@ -1,14 +1,10 @@
-import { Link } from 'react-router-dom';
-
 function HowItWorks () {
 
     return (
         <section className="howItWorksSection" id="howItWorks">
             <div className="howItWorksContainer">
                 <div className="howItWorksHeader">как это работает</div>
-                <Link to="/" className="howItWorksLink">
-                    Узнать больше
-                </Link>
+                <div className="howItWorksLink">Узнать больше</div>
             </div>
             <div className="benefitsBox">
                 <div className="benefit">

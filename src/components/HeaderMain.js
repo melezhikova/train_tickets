@@ -4,7 +4,7 @@ import Menu from "./Menu";
 function HeaderMain () {
     return (
         <header className="mainHeader">
-            <div className="logo">Лого</div>
+            <a href="/#logo" id="logo" className="logo">Лого</a>
             <Menu />
             <div className="mainHeaderContainer">
                 <div className="slogan">Вся жизнь - <span className="bold">путешествие!</span></div>

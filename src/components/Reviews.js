@@ -1,4 +1,5 @@
 import { useState } from "react";
+import quotation from "../img/review/quotationEnd.png";
 
 function Reviews () {
 
@@ -16,7 +17,7 @@ function Reviews () {
         {
             first: {
                 author: 'Оля Петрова',
-                text: 'Все круто, мне все понравилось:). Интуитивно понятный интерфейс.'
+                text: 'Все круто, мне все понравилось:). Интуитивно понятный интерфейс. Здорово!'
             },
             second: {
                 author: 'Вася Иванов',
@@ -64,14 +65,20 @@ function Reviews () {
                     <div className="reviewAuthorAvatar author1"></div>
                     <div className="reviewBox">
                         <div className="reviewAuthorName">{data[number].first.author}</div>
-                        <div className="reviewText">{data[number].first.text}</div>
+                        <div className="quotationStart"></div>
+                        <div className="reviewText">{data[number].first.text}
+                            <img src={quotation} className="quotationEnd" />
+                        </div>
                     </div>
                 </div>
                 <div className="reviewItem">
                     <div className="reviewAuthorAvatar author2"></div>
                     <div className="reviewBox">
                         <div className="reviewAuthorName">{data[number].second.author}</div>
-                        <div className="reviewText">{data[number].second.text}</div>
+                        <div className="quotationStart"></div>
+                        <div className="reviewText">{data[number].second.text}
+                            <img src={quotation} className="quotationEnd" />
+                        </div>
                     </div>
                 </div>
             </div>

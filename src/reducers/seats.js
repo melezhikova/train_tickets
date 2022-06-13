@@ -3,6 +3,7 @@ import {
     FETCH_SEATS_FAILURE,
     FETCH_SEATS_REQUEST,
     FETCH_SEATS_SUCCESS,
+    SET_PASSENGER,
     SET_TRAIN
 } from "../actions/actionTypes";
 
@@ -12,10 +13,12 @@ const initialState = {
     loadingStatus: 'idle',
     error: null,
     quantity: {
+        total: 1,
         adultQuantity: 1,
         childQuantity: 0,
         childWithoutSeatQuantity: 0
     },
+    passengers: [],
 }
 
 export default function seatsReducer(state = initialState, action) {
@@ -29,7 +32,6 @@ export default function seatsReducer(state = initialState, action) {
         case CHANGE_QUANTITY_FIELD:
             const { name, value } = action.payload;
             const { quantity } = state;
-            console.log(name, value);
             return {
                 ...state,
                 quantity: {
@@ -56,6 +58,29 @@ export default function seatsReducer(state = initialState, action) {
                 seats: data,
                 loadingStatus: 'success',
             };
+        case SET_PASSENGER:
+            const { passenger } = action.payload;
+            const { passengers } = state;
+            let index;
+            if (passengers.length > 0) {
+                index = passengers.findIndex(item => item.number === passenger.number);
+                if (index !== -1) {
+                    return {
+                        ...state,
+                        passengers: passengers[index] = passenger, 
+                    }
+                }   else {
+                    return {
+                        ...state,
+                        passengers: [...passengers, passenger],
+                    }
+                }
+            } else {
+                return {
+                    ...state,
+                    passengers: [passenger],
+                }
+            }
         default:
             return state;
     }

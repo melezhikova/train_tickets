@@ -26,7 +26,6 @@ export default function lastRoutesReducer(state = initialState, action) {
             };
         case FETCH_LAST_ROUTES_SUCCESS:
             const { data } = action.payload;
-            console.log(data);
             return {
                 ...state,
                 lastRoutes: data,
