@@ -22,14 +22,14 @@ function Train (props) {
         if (seats && type) {
             seats.forEach(item => {
                 if (item.coach.class_type === type) {
-                    newCoaches.push(item.coach.name);
+                    newCoaches.push(item.coach.name.split('-')[1]);
                 }
             })
         }
         setCoaches(newCoaches);
         if (newCoaches.length > 0) {
             setChoosenCoaches(prevState => {
-                prevState.push(seats.find(item => item.coach.name === newCoaches[0]));
+                prevState.push(seats.find(item => item.coach.name.split('-')[1] === newCoaches[0]));
                 return [...prevState];
             });
         }
@@ -47,9 +47,11 @@ function Train (props) {
     const chooseCoach = nmb => {
         setChoosenCoaches(prevState => {
             console.log(prevState);
-            const index = prevState.findIndex(item => item.coach.name === nmb);
+            const index = prevState.findIndex(item => item.coach.name.split('-')[1] === nmb);
             if (index === -1) { 
-                prevState.push(seats.find(item => item.coach.name === nmb));
+                prevState.push(seats.find(item => item.coach.name.split('-')[1] === nmb));
+            } else {
+                prevState.splice(index, 1);
             }
             return [...prevState];
         });
@@ -89,14 +91,14 @@ function Train (props) {
                         <div className="seats_coachesNumbers">
                             <div>Вагоны</div>
                             {coaches.map(o => (
-                                <div onClick={() => chooseCoach(o)} key={o} className={choosenCoaches.length > 0 && choosenCoaches.some(item => item.coach.name === o) ? "seats_coachNumber seats_coachNumberActive" : "seats_coachNumber"}>{o}</div>
+                                <div onClick={() => chooseCoach(o)} key={o} className={choosenCoaches.length > 0 && choosenCoaches.some(item => item.coach.name.split('-')[1] === o) ? "seats_coachNumber seats_coachNumberActive" : "seats_coachNumber"}>{o}</div>
                             ))}
                         </div>
                         <div className="seats_coachesText">Нумерация вагонов начинается с головы поезда</div>
                     </div>
                     {choosenCoaches.length > 0 && 
-                        choosenCoaches.map(o => <TrainCoach key={o.coach._id} coach={o} type={type} />)
-                    }
+                        choosenCoaches.map(o => <TrainCoach key={o.coach._id} coach={o} type={type} />
+                    )}
                 </div>
             }
         </div>

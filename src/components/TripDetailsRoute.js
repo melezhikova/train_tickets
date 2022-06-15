@@ -1,7 +1,7 @@
 import { format } from "date-fns";
 
 function TripDetailsRoute (props) {
-    const { train } = props;
+    const { train, direction } = props;
 
     return (
         <div>
@@ -24,7 +24,7 @@ function TripDetailsRoute (props) {
                     <div className="tripDetails_trainTime">{format(new Date(train.from.datetime * 1000),'hh:mm')}</div>
                     <div className="tripDetails_date">{format(new Date(train.from.datetime * 1000),'dd.MM.yyyy')}</div>
                 </div>
-                    <div className="routes_yellowArrowPic routes_yellowArrowPic_trainStart"></div>
+                    <div className={`routes_yellowArrowPic routes_yellowArrowPic_${direction}`}></div>
                 <div className="tripDetails_sectionRowBoxRight">
                     <div className="tripDetails_trainTime">{format(new Date(train.to.datetime * 1000), 'hh:mm')}</div>
                     <div className="tripDetails_date">{format(new Date(train.to.datetime * 1000), 'dd.MM.yyyy')}</div>

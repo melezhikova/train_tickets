@@ -119,6 +119,12 @@ body {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.verifyBtn {
+    width: 100%;
+    padding: 10px 60px;
+    margin: 0;
+}
+
 
 /*header*/
 
@@ -598,7 +604,7 @@ div.react-datepicker__day--selected {
 .mainContainer {
     display: flex;
     background: #F7F5F9;
-    padding: 95px 10% 193px;
+    padding: 95px 5% 193px;
     margin: auto;
 }
 
@@ -1032,12 +1038,16 @@ span.input-range__label--value {
 }
 
 .routes_timing {
-    display: flex;
     width: 60%;
     padding: 54px 40px 0;
     margin-left: auto;
     margin-right: auto;
     border-right: 1px dashed #E5E5E5;
+}
+
+.routes_timingRow {
+    display: flex;
+    margin-bottom: 60px;
 }
 
 .routes_timingTime {
@@ -1166,7 +1176,7 @@ span.input-range__label--value {
 
 .pages {
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
     margin-top: 142px;
 }
 
@@ -1491,9 +1501,11 @@ span.input-range__label--value {
 }
 
 /*TrainCoach*/
+
 .seats_coachDetails {
     display: flex;
     justify-content: space-between;
+    padding-right: 55px;
 }
 
 .seats_coachDetails_coach {
@@ -1501,7 +1513,7 @@ span.input-range__label--value {
     flex-direction: column;
     align-items: center;
     background: #FFD98F;
-    padding: 30px 0 0 30px;
+    padding: 30px 50px 0 30px;
 }
 
 .seats_coachDetails_coachNumber {
@@ -1626,6 +1638,71 @@ span.input-range__label--value {
     padding: 8px 10px;
 }
 
+/*ChoicePlaces*/
+
+.choicePlaces {
+    position: relative;
+    padding-bottom: 80px;
+}
+
+.choicePlacesPic {
+    width: 921px;
+    height: 145px;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+} 
+
+.choicePlacesPic_123 {
+    background-image: url('../src/img/train/123class.png');
+}
+
+.choicePlacesPic_4 {
+    background-image: url('../src/img/train/4class.png');
+}
+
+.choicePlaces_placesContainer {
+    position: absolute;
+    top: 28px;
+    left: calc((100% - 921px)/2 + 134px);
+    display: flex;
+    z-index: 99;
+}
+
+.choicePlaces_placesBox {
+    width: 84.5px;
+    height: 60px;
+    display: flex;
+    flex-direction: column-reverse;
+    flex-wrap: wrap;
+    align-content: space-between;
+}
+
+.choicePlaces_placesBox:nth-child(n + 2) {
+    margin-left: 5px;
+}
+
+.choicePlaces_place, .choicePlaces_placeOccupied, .choicePlaces_placeChoosen {
+    width: 27px;
+    height: 29px;
+    font-size: 0.55em;
+    font-weight: 700;
+    text-align: center;
+    background-color: #F3F3F3;
+    padding-top: 5px;
+    cursor: pointer;
+}
+
+.choicePlaces_placeOccupied {
+    color: #FFFFFF;
+    background-color: #C4C4C4;
+}
+
+.choicePlaces_placeChoosen {
+    /* width: 25px;
+    height: 27px; */
+    border: 3px solid #FFA800;
+}
 
 /*TripDetails*/
 
@@ -2068,6 +2145,99 @@ span.input-range__label--value {
     width: 180px;
 }
 
+/*Verify*/
+
+.verifySection {
+    width: 100%;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    margin-bottom: 45px;
+}
+
+.verify_header {
+    font-size: 1.25em;
+    padding: 30px;
+    border-bottom: 1px solid #928F94;
+}
+
+.verify_container {
+    display: flex;
+    width: 100%;
+}
+
+.verify_seats {
+    padding: 48px 23px 25px 25px;
+}
+
+.verify_leftPart {
+    width: 68%;
+}
+
+.verify_passenger {
+    width: 100%;
+    display: flex;
+    font-size: 0.75em;
+    padding: 60px 0 35px;
+}
+
+.verify_passenger:nth-child(n + 2) {
+    border-top: 1px dashed #E5E5E5;
+}
+
+.verify_passengerLeft {
+    width: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.verify_passengerPic {
+    width: 68px;
+    height: 68px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-image: url('../src/img/passengerRound.png');
+    margin-bottom: 15px;
+}
+
+.verify_name {
+    margin-bottom: 10px;
+}
+
+.verify_passengerDetails {
+    color: #928F94;
+    margin-bottom: 5px;
+}
+
+.verify_rightPart {
+    width: 32%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-left: 1px dashed #E5E5E5;
+    padding: 0 23px 25px 25px;
+}
+
+.verify_totalPrice {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25em;
+    margin-bottom: 30px;
+}
+
+.verify_totalPriceBox {
+    display: flex;
+}
+
+.verify_totalPriceFigure {
+    font-weight: 700;
+}
+
+.verify_paymentMethod {
+    padding: 44px 0 75px 33px;
+}
 
 /*footer*/
 

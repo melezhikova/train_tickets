@@ -10,7 +10,8 @@ import { useNavigate } from "react-router-dom";
 
 function Passengers () {
 
-    const { quantity, passengers } = useSelector(state => state.seats);
+    const { quantity } = useSelector(state => state.seats);
+    const { passengers } = useSelector(state => state.passengers);
     const [ passList, setPassList ] = useState([]);
     const [ complete, setComplete ] = useState(false);
     const dispatch = useDispatch();
@@ -25,12 +26,15 @@ function Passengers () {
     },[quantity]);
 
     useEffect (() => {
-        if (passList.length === passengers.length) {
-            setComplete (true);
-        } else {
-            setComplete (false);
+        console.log(passengers, complete);
+        let check = true;
+        for (let i=0; i < passengers.length; i+=1) {
+            if (passengers[i].complete === false) {
+                check = false;
+            }
         }
-    },[passengers,passList]);
+        setComplete (check);
+    },[passengers]);
 
     const addPassenger = () => {
         dispatch(changeQuantityField('childWithoutSeatQuantity', quantity.childWithoutSeatQuantity * 1 + 1));

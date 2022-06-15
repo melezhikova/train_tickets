@@ -8,6 +8,7 @@ import thunk from 'redux-thunk';
 import citiesReducer from "../reducers/cities";
 import emailReducer from '../reducers/email';
 import lastRoutesReducer from '../reducers/lastRoutes';
+import passengersReducer from '../reducers/passengers';
 import routeSettingsReducer from '../reducers/routeSettings';
 import seatsReducer from '../reducers/seats';
 import userReducer from '../reducers/user';
@@ -19,6 +20,7 @@ const reducer = combineReducers({
     email: emailReducer,
     seats: seatsReducer,
     user: userReducer,
+    passengers: passengersReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

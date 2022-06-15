@@ -38,21 +38,41 @@ function Routes () {
                     </div>
                     <div className="routes_routeDetails">
                         <div className="routes_timing">
-                            <div className="routes_timingItinerary">
-                                <div className="routes_timingTime">{format(new Date(o.departure.from.datetime * 1000),'hh:mm')}</div>
-                                <div className="routes_timingCity">{o.departure.from.city.name}</div>
-                                <div className="routes_timingStation">{o.departure.from.railway_station_name}</div>
-                            </div>
-                            <div className="routes_duration">
-                                <div className="routes_durationTime">
-                                    <div className="routes_durationTime">{`${Math.trunc(o.departure.duration / 3600)}:${((o.departure.duration % 3600) / 60) < 10 ? `0${(o.departure.duration % 3600) / 60}` : (o.departure.duration % 3600) / 60}`}</div>
+                            <div className="routes_timingRow">
+                                <div className="routes_timingItinerary">
+                                    <div className="routes_timingTime">{format(new Date(o.departure.from.datetime * 1000),'hh:mm')}</div>
+                                    <div className="routes_timingCity">{o.departure.from.city.name}</div>
+                                    <div className="routes_timingStation">{o.departure.from.railway_station_name}</div>
                                 </div>
-                                <div className="routes_yellowArrowPic routes_yellowArrowPic_trainStart"></div>
+                                <div className="routes_duration">
+                                    <div className="routes_durationTime">
+                                        <div className="routes_durationTime">{`${Math.trunc(o.departure.duration / 3600)}:${((o.departure.duration % 3600) / 60) < 10 ? `0${(o.departure.duration % 3600) / 60}` : (o.departure.duration % 3600) / 60}`}</div>
+                                    </div>
+                                    <div className="routes_yellowArrowPic routes_yellowArrowPic_trainStart"></div>
+                                </div>
+                                <div className="routes_timingItinerary">
+                                    <div className="routes_timingTime">{format(new Date(o.departure.to.datetime * 1000), 'hh:mm')}</div>
+                                    <div className="routes_timingCity">{o.departure.to.city.name}</div>
+                                    <div className="routes_timingStation">{o.departure.to.railway_station_name}</div>
+                                </div>
                             </div>
-                            <div className="routes_timingItinerary">
-                                <div className="routes_timingTime">{format(new Date(o.departure.to.datetime * 1000), 'hh:mm')}</div>
-                                <div className="routes_timingCity">{o.departure.to.city.name}</div>
-                                <div className="routes_timingStation">{o.departure.to.railway_station_name}</div>
+                            <div className="routes_timingRow">
+                                <div className="routes_timingItinerary">
+                                    <div className="routes_timingTime">{format(new Date(o.departure.from.datetime * 1000),'hh:mm')}</div>
+                                    <div className="routes_timingCity">{o.departure.from.city.name}</div>
+                                    <div className="routes_timingStation">{o.departure.from.railway_station_name}</div>
+                                </div>
+                                <div className="routes_duration">
+                                    <div className="routes_durationTime">
+                                        <div className="routes_durationTime">{`${Math.trunc(o.departure.duration / 3600)}:${((o.departure.duration % 3600) / 60) < 10 ? `0${(o.departure.duration % 3600) / 60}` : (o.departure.duration % 3600) / 60}`}</div>
+                                    </div>
+                                    <div className="routes_yellowArrowPic routes_yellowArrowPic_trainEnd"></div>
+                                </div>
+                                <div className="routes_timingItinerary">
+                                    <div className="routes_timingTime">{format(new Date(o.departure.to.datetime * 1000), 'hh:mm')}</div>
+                                    <div className="routes_timingCity">{o.departure.to.city.name}</div>
+                                    <div className="routes_timingStation">{o.departure.to.railway_station_name}</div>
+                                </div>
                             </div>
                         </div>
                         <div className="routes_seats">

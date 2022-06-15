@@ -30,7 +30,7 @@ function TripDetails () {
                     </div>
                     <div onClick={() => togglevision('start')} className={vision.start ? "tripToolsSectionHeaderToggle opened" : "tripToolsSectionHeaderToggle closed"}></div>
                 </div>    
-                {vision.start && <TripDetailsRoute train={route.departure} />}
+                {vision.start && <TripDetailsRoute train={route.departure} direction="trainStart" />}
             </div>
             <div className="tripToolsSection">
                 <div className="tripToolsSectionHeader">
@@ -40,7 +40,7 @@ function TripDetails () {
                     </div>
                     <div onClick={() => togglevision('end')} className={vision.end ? "tripToolsSectionHeaderToggle opened" : "tripToolsSectionHeaderToggle closed"}></div>
                 </div>    
-                {vision.end && <TripDetailsRoute train={route.departure} />}
+                {vision.end && <TripDetailsRoute train={route.departure} direction="trainEnd" />}
             </div>
             <div className="tripToolsSection">
                 <div className="tripToolsSectionHeader">

@@ -3,13 +3,14 @@ import {
     FETCH_SEATS_FAILURE,
     FETCH_SEATS_REQUEST,
     FETCH_SEATS_SUCCESS,
-    SET_PASSENGER,
+    SET_CHOOSEN_SEAT,
     SET_TRAIN
 } from "../actions/actionTypes";
 
 const initialState = {
     route: null,
     seats: null,
+    choosenSeats: [],
     loadingStatus: 'idle',
     error: null,
     quantity: {
@@ -18,7 +19,6 @@ const initialState = {
         childQuantity: 0,
         childWithoutSeatQuantity: 0
     },
-    passengers: [],
 }
 
 export default function seatsReducer(state = initialState, action) {
@@ -58,27 +58,37 @@ export default function seatsReducer(state = initialState, action) {
                 seats: data,
                 loadingStatus: 'success',
             };
-        case SET_PASSENGER:
-            const { passenger } = action.payload;
-            const { passengers } = state;
-            let index;
-            if (passengers.length > 0) {
-                index = passengers.findIndex(item => item.number === passenger.number);
-                if (index !== -1) {
-                    return {
-                        ...state,
-                        passengers: passengers[index] = passenger, 
-                    }
-                }   else {
-                    return {
-                        ...state,
-                        passengers: [...passengers, passenger],
-                    }
-                }
-            } else {
+        case SET_CHOOSEN_SEAT:
+            const { index, coach } = action.payload;
+            console.log(index, coach);
+            const { choosenSeats } = state;
+            if (choosenSeats.length === 0) {
                 return {
                     ...state,
-                    passengers: [passenger],
+                    choosenSeats: [{coach, seats: [index]}],
+                }
+            } else {
+                const idx = choosenSeats.findIndex(item => item.coach === coach);
+                if (idx === -1) {
+                    return {
+                        ...state,
+                        choosenSeats: [...choosenSeats, {coach, seats: [index]}],
+                    }
+                } else {
+                    if (choosenSeats[idx].seats.includes(index)) {
+                        console.log(choosenSeats[idx].seats);
+                        return {
+                            ...state,
+                            choosenSeats: [{...choosenSeats[idx],
+                                seats: choosenSeats[idx].seats.filter(item => item !== index)}]
+                        }
+                    } else {
+                        return {
+                            ...state,
+                            choosenSeats: [{...choosenSeats[idx],
+                                seats: [...choosenSeats[idx].seats, index]}]
+                        }
+                    }
                 }
             }
         default:
