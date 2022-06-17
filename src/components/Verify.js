@@ -6,14 +6,31 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import AvailableSeats from "./AvailableSeats";
 import { format } from "date-fns";
+import { useEffect, useState } from "react";
 
 function Verify () {
 
     const { route } = useSelector(state => state.seats);
     const { passengers } = useSelector(state => state.passengers);
     const { payment_method } = useSelector(state => state.user);
+    const { choosenSeats } = useSelector(state => state.seats);
+    const [ totalPrice, setTotalPice ] = useState(0);
     const dispatch = useDispatch();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        console.log(choosenSeats);
+        let totalPriceNew = 0;
+        if (choosenSeats.length > 0) {
+            choosenSeats.forEach(item => {
+                if (item.seats.length > 0) {
+                    item.seats.forEach(place => totalPriceNew += place.price);
+                }
+            })
+        }
+        setTotalPice(totalPriceNew);
+    },[choosenSeats])
+
 
     const changeTrain = () => {
         navigate('/tickets');
@@ -139,8 +156,8 @@ function Verify () {
                                 <div className="verify_totalPrice">
                                     <div>Всего</div>
                                     <div className="verify_totalPriceBox">
-                                        <div className="verify_totalPriceFigure"></div>
-                                        <div className="seatsPriceСurrency"></div>
+                                        <div className="verify_totalPriceFigure">{totalPrice.toLocaleString()}</div>
+                                        <div className="seatsPriceСurrency verify_priceСurrency"></div>
                                     </div>
                                 </div>
                                 <button onClick={changePassengers} className="whiteBtn verifyBtn">Изменить</button>

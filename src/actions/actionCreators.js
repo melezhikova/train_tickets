@@ -4,6 +4,7 @@ import {
     CHANGE_PASSENGER_FIELD, 
     CHANGE_QUANTITY_FIELD, 
     CHANGE_USER_FIELD, 
+    CLOSE_ERROR, 
     FETCH_CITIES_FAILURE, 
     FETCH_CITIES_REQUEST, 
     FETCH_CITIES_SUCCESS, 
@@ -21,6 +22,7 @@ import {
     FETCH_SEATS_SUCCESS, 
     SET_CHOOSEN_SEAT, 
     SET_CURRENT_PAGE, 
+    SET_ERROR, 
     SET_NEW_PASSENGER,
     SET_PASSENGER_COMPLETE, 
     SET_ROUTE_SETTING, 
@@ -196,12 +198,26 @@ export const changeUserField = (name, value) => ({
     },
 });
 
-export const setChoosenSeat = (index, coach) => ({
+export const setChoosenSeat = (coach, place, price) => ({
     type: SET_CHOOSEN_SEAT,
     payload: {
-        index,
         coach,
+        place,
+        price,
     },
+});
+
+export const setError = (messageMain, messageDetails, type) => ({
+    type: SET_ERROR,
+    payload: {
+        messageMain,
+        messageDetails,
+        type,
+    },
+});
+
+export const closeError = () => ({
+    type: CLOSE_ERROR,
 });
 
 

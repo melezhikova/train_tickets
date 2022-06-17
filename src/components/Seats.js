@@ -8,11 +8,13 @@ import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { fetchSeats } from "../actions/actionCreators";
+import Info from "./Info";
 
 function Seats () {
 
     const { route } = useSelector(state => state.seats);
     const { routeSet } = useSelector(state => state.routeSettings);
+    const { error } = useSelector(state => state.showMessages);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -34,6 +36,7 @@ function Seats () {
 
     return (
         <div>
+            {error && <Info />}
             <SecondaryHeader />
             <Stage stage="1" />
             <main className="mainContainer">

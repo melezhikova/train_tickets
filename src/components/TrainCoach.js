@@ -22,6 +22,7 @@ function TrainCoach (props) {
         linens: false,
         food: false,
     })
+    const random = Math.trunc(Math.random() * (20 - 5));
 
     useEffect(() => {
         let bottom = 0;
@@ -48,6 +49,7 @@ function TrainCoach (props) {
             })
         }
         setCoachSeats(prevState => ({...prevState, bottom, top, all}));
+
     },[coach])
 
     const handleChange = service => {
@@ -134,6 +136,7 @@ function TrainCoach (props) {
                     </div>
                 </div>
             </div>
+            <div className="seats_lookingPeople">{`${random} человек выбирают места в этом поезде`}</div>
             <ChoicePlaces key={coach.coach._id} coach={coach} />
         </div>
     )

@@ -1,6 +1,14 @@
-function Info (props) {
+import { useSelector, useDispatch } from "react-redux";
+import { closeError } from "../actions/actionCreators";
 
-    const { messageMain, messageDetails, type } = props;
+function Info () {
+    
+    const { messageMain, messageDetails, type } = useSelector(state => state.showMessages);
+    const dispatch = useDispatch();
+
+    const closePopup = () => {
+        dispatch(closeError());
+    }
 
     return (
         <div className="popup">
@@ -12,8 +20,8 @@ function Info (props) {
                     <div className={`popupMessageMain_${type}`}>{messageMain}</div>
                     <div className="messageDetails">{messageDetails}</div>
                 </div>
-                <div>
-                    <button className="popupBtn">ПОНЯТНО</button>
+                <div className="btnBox_popup">
+                    <button onClick={closePopup} className="whiteBtn">Понятно</button>
                 </div>
             </div>
         </div>

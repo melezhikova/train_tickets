@@ -11,6 +11,7 @@ import lastRoutesReducer from '../reducers/lastRoutes';
 import passengersReducer from '../reducers/passengers';
 import routeSettingsReducer from '../reducers/routeSettings';
 import seatsReducer from '../reducers/seats';
+import showMessagesReducer from '../reducers/showMessages';
 import userReducer from '../reducers/user';
 
 const reducer = combineReducers({
@@ -21,6 +22,7 @@ const reducer = combineReducers({
     seats: seatsReducer,
     user: userReducer,
     passengers: passengersReducer,
+    showMessages: showMessagesReducer,
 });
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

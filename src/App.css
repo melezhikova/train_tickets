@@ -32,6 +32,12 @@ body {
     justify-content: flex-end;
 }
 
+.btnBox_popup {
+    display: flex;
+    justify-content: center;
+    padding: 30px 0 23px;
+}
+
 .personInfo_btnBox {
     padding: 37px 30px 28px;
 }
@@ -123,6 +129,68 @@ body {
     width: 100%;
     padding: 10px 60px;
     margin: 0;
+}
+
+/*popup-msgs*/
+
+.popup {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.popup::before {
+    content: "";
+    background-color: #FFFFFF;
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0.8;
+    z-index: -1;
+}
+
+.popupBox {
+    width: 660px;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.popupHeader_error {
+    background: rgba(255, 61, 0, 0.38);
+    padding: 35px;
+    border-bottom: 1px dashed #928F94;
+}
+
+.popupHeaderPic {
+    width: 32px;
+    height: 32px;
+    background-image: url('../src/img/info.png');
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.popupText {
+    padding: 40px 45px 50px;
+    font-size: 0.75em;
+    border-bottom: 1px dashed #928F94;
+}
+
+.popupMessageMain_error, .popupMessageMain_info {
+    margin-bottom: 20px;
+}
+
+.popupMessageMain_error {
+    font-weight: 500;
+    font-size: 1.33em;
 }
 
 
@@ -697,6 +765,7 @@ div.react-datepicker__day--selected {
     background-size: contain;
     margin-right: 0;
     margin-left: auto;
+    cursor: pointer;
 }
 
 .tripTollsItemSwitchTrue {
@@ -855,6 +924,7 @@ span.input-range__label--value {
     border: 1px solid #C4C4C4;
     box-shadow: 0px 2px 2px rgba(62, 60, 65, 0.25);
     padding: 15px;
+    cursor: pointer;
 }
 
 .lastRouteItem:nth-child(n + 2) {
@@ -1638,11 +1708,37 @@ span.input-range__label--value {
     padding: 8px 10px;
 }
 
+.seats_lookingPeople {
+    width: 199px;
+    height: 72px;
+    font-size: 0.67em;
+    background: #F3F3F3;
+    border-radius: 5px;
+    padding: 15px;
+    margin-right: 50px;
+    margin-left: auto;
+}
+
 /*ChoicePlaces*/
 
 .choicePlaces {
     position: relative;
+    width: 961px;
     padding-bottom: 80px;
+}
+
+.choicePlaces_coachNumber {
+    position: absolute;
+    top: 0;
+    left: calc((100% - 921px)/2 + 40px);
+    width: 30px;
+    height: 23px;
+    color: #FFFFFF;
+    font-size: 0.55em;
+    font-weight: 700;
+    text-align: center;
+    background-color: #292929;
+    padding-top: 5px;
 }
 
 .choicePlacesPic {
@@ -1661,7 +1757,7 @@ span.input-range__label--value {
     background-image: url('../src/img/train/4class.png');
 }
 
-.choicePlaces_placesContainer {
+.choicePlaces_placesContainer, .choicePlaces_placesContainerThird, .choicePlaces_placesSecondContainerForFourth {
     position: absolute;
     top: 28px;
     left: calc((100% - 921px)/2 + 134px);
@@ -1669,21 +1765,41 @@ span.input-range__label--value {
     z-index: 99;
 }
 
+.choicePlaces_placesContainerThird {
+    top: 113px;
+}
+
+.choicePlaces_placesSecondContainerForFourth {
+    top: 88px;
+}
+
 .choicePlaces_placesBox {
-    width: 84.5px;
-    height: 60px;
+    width: 84.7px;
+    height: 59px;
     display: flex;
     flex-direction: column-reverse;
     flex-wrap: wrap;
     align-content: space-between;
 }
 
-.choicePlaces_placesBox:nth-child(n + 2) {
+.choicePlaces_placesBox:nth-child(n + 2), .choicePlaces_placesBoxThird:nth-child(n + 2), .choicePlaces_placesBoxFourth:nth-child(n + 2) {
     margin-left: 5px;
 }
 
-.choicePlaces_place, .choicePlaces_placeOccupied, .choicePlaces_placeChoosen {
-    width: 27px;
+.choicePlaces_placesBoxThird {
+    display: flex;
+}
+
+.choicePlaces_placesBoxFourth {
+    display: flex;
+    flex-direction: column-reverse;
+    width: 39px;
+    height: 48px;
+    align-items: flex-end;
+}
+
+.choicePlaces_place, .choicePlaces_placeThird, .choicePlaces_placeFirst, .choicePlaces_placeFourth  {
+    width: 26px;
     height: 29px;
     font-size: 0.55em;
     font-weight: 700;
@@ -1693,15 +1809,54 @@ span.input-range__label--value {
     cursor: pointer;
 }
 
+.choicePlaces_placeFirst {
+    width: 26px;
+    height: 58px;
+    padding-top: 35px;
+}
+
+.choicePlaces_placeThird {
+    height: 24px;
+    width: 42.4px;
+}
+
+.choicePlaces_placeFourth {
+    width: 29px;
+    height: 19px;
+    margin-bottom: 3px;
+    padding-top: 2px;
+}
+
 .choicePlaces_placeOccupied {
     color: #FFFFFF;
     background-color: #C4C4C4;
 }
 
 .choicePlaces_placeChoosen {
-    /* width: 25px;
-    height: 27px; */
+    padding-top: 3px;
     border: 3px solid #FFA800;
+}
+
+.choicePlaces_placeChoosenFirst {
+    border: 3px solid #FFA800;
+}
+
+.choicePlaces_placeChoosenFourth {
+    padding-top: 0;
+    border: 3px solid #FFA800;
+}
+
+.choicePlaces_totalPrice {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-weight: 700;
+    color: #FFA800;
+    padding: 20px 28px 0 0;
+}
+
+.choicePlaces_totalPriceFigure {
+    margin-right: 5px;
 }
 
 /*TripDetails*/
@@ -1725,6 +1880,7 @@ span.input-range__label--value {
 .tripDetails_sectionRow {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     font-size: 0.75em;
     margin-bottom: 20px;
 }
@@ -1781,10 +1937,34 @@ span.input-range__label--value {
 
 .tripDetails_sectionRowPart {
     display: flex;
+    align-items: center;
 }
 
 .tripDetails_passQuantity {
     margin-right: 5px;
+}
+
+.tripDetails_trainPrice {
+    font-size: 1.25em;
+    font-weight: 700;
+    margin-right: 5px;
+}
+
+.tripDetails_sectionTotalPrice {
+    align-items: baseline;
+}
+
+.tripDetails_trainTotalPrice {
+    font-weight: 700;
+    font-size: 2em;
+    color: #FFA800;
+    margin-right: 5px;
+}
+
+.tripDetails_totalPriceСurrency {
+    width: 26px;
+    height: 32px;
+    background-image: url('../src/img/rubWhiter.png');
 }
 
 /*PersonInfo*/
@@ -2229,14 +2409,21 @@ span.input-range__label--value {
 
 .verify_totalPriceBox {
     display: flex;
+    align-items: baseline;
 }
 
 .verify_totalPriceFigure {
     font-weight: 700;
+    margin-right: 10px;
 }
 
 .verify_paymentMethod {
     padding: 44px 0 75px 33px;
+}
+
+.verify_priceСurrency {
+    width: 20px;
+    height: 24px;
 }
 
 /*footer*/

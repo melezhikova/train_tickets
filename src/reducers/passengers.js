@@ -52,21 +52,19 @@ export default function passengersReducer(state = initialState, action) {
             const { name, value, passNumber } = action.payload;
             const index = passengers.findIndex(item => item.number === passNumber);
             if (index !== -1) {
+                passengers[index][name] = value;
+                passengers[index].complete = false;
                 return {
                     ...state,
-                    passengers: [{...passengers[index],
-                        [name]: value,
-                        complete: false,
-                    }] 
+                    passengers: [...passengers],
                 }
             }
         case SET_PASSENGER_COMPLETE:
             const { idx } = action.payload;
+            passengers[idx].complete = true;
             return {
                 ...state,
-                passengers: [{...passengers[idx],
-                    complete: true,
-                }] 
+                passengers: [...passengers],
             }
         default:
             return state;

@@ -20,17 +20,24 @@ function PersonInfo (props) {
         text: null,
         example: null,
     });
+    const [ completedPassengers, setCompletedPassengers ] = useState(0);
     const [ show, setShow ] = useState({
         'is_adult': false,
         'document_type': false,
     });
    
     useEffect(() => {
-        console.log(passengers);
+        let readyPass = 0;
+        passengers.forEach(item => {
+            if (item.complete) {
+                readyPass += 1;
+            }
+        })
+        setCompletedPassengers(readyPass);
         if (index === "" && passengers.findIndex(item => item.number === number) === -1) {
             dispatch(setNewPassenger(number));
         }
-        if (passengers.length + 1 >= number) {
+        if (completedPassengers + 1 >= number) {
             setVision(true);
         }
         if (passengers.length > 0 && index === "") {

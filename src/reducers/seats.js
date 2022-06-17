@@ -14,7 +14,6 @@ const initialState = {
     loadingStatus: 'idle',
     error: null,
     quantity: {
-        total: 1,
         adultQuantity: 1,
         childQuantity: 0,
         childWithoutSeatQuantity: 0
@@ -59,34 +58,35 @@ export default function seatsReducer(state = initialState, action) {
                 loadingStatus: 'success',
             };
         case SET_CHOOSEN_SEAT:
-            const { index, coach } = action.payload;
-            console.log(index, coach);
+            const { coach, place, price } = action.payload;
             const { choosenSeats } = state;
+            console.log(choosenSeats);
             if (choosenSeats.length === 0) {
                 return {
                     ...state,
-                    choosenSeats: [{coach, seats: [index]}],
+                    choosenSeats: [{coach, seats: [{place, price}]}],
                 }
             } else {
                 const idx = choosenSeats.findIndex(item => item.coach === coach);
                 if (idx === -1) {
                     return {
                         ...state,
-                        choosenSeats: [...choosenSeats, {coach, seats: [index]}],
+                        choosenSeats: [...choosenSeats, {coach, seats: [{place, price}]}],
                     }
                 } else {
-                    if (choosenSeats[idx].seats.includes(index)) {
-                        console.log(choosenSeats[idx].seats);
+                    const placeIdx = choosenSeats[idx].seats.findIndex(item => item.place === place);
+                    if (placeIdx !== -1) {
+                        choosenSeats[idx].seats = choosenSeats[idx].seats.filter(item => item.place !== place);
                         return {
                             ...state,
-                            choosenSeats: [{...choosenSeats[idx],
-                                seats: choosenSeats[idx].seats.filter(item => item !== index)}]
+                            choosenSeats: [...choosenSeats],
                         }
                     } else {
+                        choosenSeats[idx].seats.push({place, price});
                         return {
                             ...state,
-                            choosenSeats: [{...choosenSeats[idx],
-                                seats: [...choosenSeats[idx].seats, index]}]
+                            choosenSeats: [...choosenSeats], 
+                                
                         }
                     }
                 }
