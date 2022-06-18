@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { format } from "date-fns";
 import TripDetailsRoute from "./TripDetailsRoute";
 
@@ -14,6 +14,7 @@ function TripDetails () {
         end: false,
         passengers: false,
     });
+    const dispatch = useDispatch();
 
     useEffect(() => {
         let allPlacesNew = [];
@@ -49,7 +50,8 @@ function TripDetails () {
         }
         setAdultPrice(priceAdult);
         setChildPrice(priceChild);
-    },[quantity, allPlaces])
+
+    },[quantity, allPlaces, dispatch])
 
     const togglevision = tool => {
         setVision(prevState => (vision[tool] === false ? {...prevState, [tool]: true} : {...prevState, [tool]: false}));

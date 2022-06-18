@@ -131,6 +131,10 @@ body {
     margin: 0;
 }
 
+.finishPageBtn {
+    border: 1px solid #292929;
+}
+
 /*popup-msgs*/
 
 .popup {
@@ -2424,6 +2428,168 @@ span.input-range__label--value {
 .verify_priceСurrency {
     width: 20px;
     height: 24px;
+}
+
+/*finishPage*/
+
+.finishPage_header {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url('../src/img/finishPage/mainPic.png');
+}
+
+.finishPage_headerContainer {
+    padding: 350px 0 200px 13%;
+}
+
+.thanksInHeader {
+    font-weight: 700;
+    font-size: 3em;
+    color: #FFFFFF;
+}
+
+.finishPage {
+    position: relative;
+    height: 1060px;
+    background: #E5E5E5;
+}
+
+.finishPage_container {
+    position: absolute;
+    width: 74%;
+    top: -170px;
+    left: 13%;
+    background: #FFFFFF;
+    border: 1px solid #C4C4C4;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+}
+
+.finishPage_orderDetails {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.5em;
+    padding: 60px 20px 40px;
+}
+
+.finishPage_orderDetailsText {
+    font-weight: 700;
+    color: #3E3C41;
+}
+
+.finishPage_orderDetailsSumm {
+    display: flex;
+    align-items: baseline;
+    font-weight: 400;
+    color: #928F94;
+}
+
+.finishPage_orderDetailsFigure {
+    font-weight: 700;
+    color: #3E3C41;
+    margin: 0 20px;
+}
+
+.finishPage_priceСurrency {
+    width: 21px;
+    height: 27px;
+}
+
+.finishPage_services {
+    display: flex;
+    justify-content: center;
+    background: #F4F3F6;
+    padding: 40px;
+}
+
+.finishPage_servicesItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.finishPage_servicesItem:nth-child(n + 2) {
+    margin-left: 145px;
+}
+
+.finishPage_servicesItemPic {
+    width: 154.84px;
+    height: 155px;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.finishPage_servicesItemPic_first {
+    background-image: url('../src/img/finishPage/first.png');
+}
+
+.finishPage_servicesItemPic_second {
+    background-image: url('../src/img/finishPage/second.png');
+}
+
+.finishPage_servicesItemPic_third {
+    background-image: url('../src/img/finishPage/third.png');
+}
+
+.finishPage_servicesItemText {
+    width: 180px;
+    font-size: 0.75em;
+    text-align: center;
+    color: #292929;
+    margin-top: 10px;
+}
+
+.finishPage_notification {
+    padding: 95px 10% 130px;
+}
+
+.finishPage_userName {
+    font-weight: 700;
+    font-size: 1.5em;
+    margin-bottom: 50px;
+}
+
+.finishPage_text {
+    margin: 0;
+}
+
+.finishPage_thanksText {
+    font-weight: 700;
+    margin-top: 70px;
+}
+
+.finishPage_bottom {
+    display: flex;
+    justify-content: space-between;
+    background: rgba(255, 168, 0, 0.88);
+    padding: 50px 80px;
+}
+
+.finishPage_estimation {
+    display: flex;
+    align-items: center;
+}
+
+.finishPage_estimationStars {
+    display: flex;
+}
+
+.finishPage_estimationStarPic, .finishPage_estimationStarPicFull {
+    width: 48px;
+    height: 48px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.finishPage_estimationStarPic {
+    background-image: url('../src/img/finishPage/star.png');
+}
+
+.finishPage_estimationStarPicFull {
+    background-image: url('../src/img/tripTools/luxWagon.png');
 }
 
 /*footer*/

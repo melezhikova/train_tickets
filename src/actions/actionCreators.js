@@ -14,6 +14,9 @@ import {
     FETCH_LAST_ROUTES_FAILURE, 
     FETCH_LAST_ROUTES_REQUEST, 
     FETCH_LAST_ROUTES_SUCCESS, 
+    FETCH_ORDER_FAILURE, 
+    FETCH_ORDER_REQUEST, 
+    FETCH_ORDER_SUCCESS, 
     FETCH_ROUTES_FAILURE, 
     FETCH_ROUTES_REQUEST, 
     FETCH_ROUTES_SUCCESS, 
@@ -26,6 +29,7 @@ import {
     SET_NEW_PASSENGER,
     SET_PASSENGER_COMPLETE, 
     SET_ROUTE_SETTING, 
+    SET_TOTAL_PRICE, 
     SET_TRAIN, 
     SWAP_CITIES 
 } from "./actionTypes";
@@ -220,6 +224,31 @@ export const closeError = () => ({
     type: CLOSE_ERROR,
 });
 
+export const fetchOrderRequest = () => ({
+    type: FETCH_ORDER_REQUEST,
+});
+  
+export const fetchOrderFailure = error => ({
+    type: FETCH_ORDER_FAILURE,
+    payload: {
+        error,
+    },
+});
+  
+export const fetchOrderSuccess = data => ({
+    type: FETCH_ORDER_SUCCESS,
+    payload: {
+        data,
+    },
+});
+
+export const setTotalPrice = price => ({
+    type: SET_TOTAL_PRICE,
+    payload: {
+        price,
+    },
+});
+
 
 
 export const fetchCities = (nameList, search) => async (dispatch) => {
@@ -310,5 +339,24 @@ export const fetchSeats = (id, data) => async (dispatch) => {
     dispatch(fetchSeatsSuccess(reguest));
     } catch (e) {
         dispatch(fetchSeatsFailure(e.message));
+    }
+}
+
+export const fetchOrder = (order, callback) => async (dispatch) => {
+    dispatch(fetchOrderRequest());
+    try {
+        const response = await fetch(`${process.env.REACT_APP_API_URL}order`, {
+            method: "POST",
+            body: JSON.stringify(order),
+        });
+        if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+        const data = await response.json();
+        console.log(data);
+        dispatch(fetchOrderSuccess(data));
+        callback();
+    } catch (e) {
+        dispatch(fetchOrderFailure(e.message));
     }
 }

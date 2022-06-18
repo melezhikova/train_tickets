@@ -6,6 +6,7 @@ import Seats from './components/Seats';
 import Passengers from './components/Passengers';
 import Paying from './components/Paying';
 import Verify from './components/Verify';
+import SuccessOrder from './components/SuccessOrder';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/passengers" element={<Passengers />} />
           <Route exact path="/paying" element={<Paying />} />
           <Route exact path="/verify" element={<Verify />} />
+          <Route exact path="/successOrder" element={<SuccessOrder />} />
         </Routes>
       </Router>
     </div>

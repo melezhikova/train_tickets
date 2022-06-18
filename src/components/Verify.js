@@ -2,24 +2,26 @@ import Footer from "./Footer";
 import SecondaryHeader from "./SecondaryHeader";
 import Stage from "./Stage";
 import TripDetails from "./TripDetails";
+import AvailableSeats from "./AvailableSeats";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import AvailableSeats from "./AvailableSeats";
 import { format } from "date-fns";
 import { useEffect, useState } from "react";
+import { fetchOrder } from "../actions/actionCreators";
+import { setTotalPrice } from "../actions/actionCreators";
 
 function Verify () {
 
-    const { route } = useSelector(state => state.seats);
+    const { route, quantity, choosenSeats } = useSelector(state => state.seats);
     const { passengers } = useSelector(state => state.passengers);
-    const { payment_method } = useSelector(state => state.user);
-    const { choosenSeats } = useSelector(state => state.seats);
+    const { loadingStatus } = useSelector(state => state.order);
+    const { first_name, last_name, patronymic, phone, email, payment_method } = useSelector(state => state.user);
     const [ totalPrice, setTotalPice ] = useState(0);
+    
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(choosenSeats);
         let totalPriceNew = 0;
         if (choosenSeats.length > 0) {
             choosenSeats.forEach(item => {
@@ -29,6 +31,8 @@ function Verify () {
             })
         }
         setTotalPice(totalPriceNew);
+        dispatch(setTotalPrice(totalPriceNew));
+        console.log('1');
     },[choosenSeats])
 
 
@@ -44,8 +48,94 @@ function Verify () {
         navigate('/paying');
     }
 
-    const goNext = () => {
+    const toVerify = () => {
+        let places = [];
+        let adultPassengers = [];
+        let childPassengers = [];
+        let placesWithPass = [];
+        choosenSeats.forEach(item => {
+            if (item.seats.length > 0) {
+                item.seats.forEach(place => places.push({
+                    coach_id: item.coach,
+                    seat_number: place.place
+                }));
+            }
+        })
+        passengers.forEach(pass => {
+            if(pass.is_adult) {
+                adultPassengers.push({
+                    passenger: pass,
+                    include_children_seat: false,
+                });
+            } else {
+                childPassengers.push(pass);
+            }
+        })
+        if (quantity.childWithoutSeatQuantity > 0) {
+            for (let i = 0; i < quantity.childWithoutSeatQuantity * 1; i +=1 ) {
+                adultPassengers[i].include_children_seat = true;
+            }
+        } 
         
+        for (let i=0; i < adultPassengers.length; i+=1) {
+            placesWithPass.push({
+                coach_id: places[i].coach_id,
+                person_info: {
+                    is_adult: true,
+                    first_name: adultPassengers[i].passenger.first_name,
+                    last_name: adultPassengers[i].passenger.last_name,
+                    patronymic: adultPassengers[i].passenger.patronymic,
+                    gender: adultPassengers[i].passenger.gender,
+                    birthday: adultPassengers[i].passenger.birthday,
+                    document_type: adultPassengers[i].passenger.document_type,
+                    document_data: adultPassengers[i].passenger.documentSeries + adultPassengers[i].passenger.documentNumber,
+                },
+                seat_number: places[i].seat_number,
+                is_child: false,
+                include_children_seat: adultPassengers[i].include_children_seat,
+            })
+        }
+        if (places.length > adultPassengers.length) {
+            for (let j = adultPassengers.length; j < places.length; j += 1) {
+                for (let k = 0; k < quantity.childQuantity; k += 1) {
+                    placesWithPass.push({
+                        coach_id: places[j].coach_id,
+                        person_info: {
+                            is_adult: false,
+                            first_name: childPassengers[k].first_name,
+                            last_name: childPassengers[k].last_name,
+                            patronymic: childPassengers[k].patronymic,
+                            gender: childPassengers[k].gender,
+                            birthday: childPassengers[k].birthday,
+                            document_type: childPassengers[k].document_type,
+                            document_data: childPassengers[k].documentSeries + adultPassengers[k].documentNumber,
+                        },
+                        seat_number: places[j].seat_number,
+                        is_child: true,
+                        include_children_seat: false,
+                    })
+                }              
+            }
+        } 
+
+        const data = {
+            user: {
+                first_name, 
+                last_name, 
+                patronymic, 
+                phone, email, 
+                payment_method
+            },
+            departure: {
+                route_direction_id: route.departure._id,
+                seats: placesWithPass,
+            }
+        }
+        const callback = () => {
+            navigate('/successOrder');
+        }
+
+        dispatch(fetchOrder(data, callback));
     }
 
     return (
@@ -176,7 +266,7 @@ function Verify () {
                         </div>
                     </section>
                         <div className="btnBox">
-                            <button onClick={goNext} className="yellowBtn seatsBtn">ПОДТВЕРДИТЬ</button>
+                            <button disabled={loadingStatus === 'pending' ? true : false} onClick={toVerify} className="yellowBtn seatsBtn">ПОДТВЕРДИТЬ</button>
                         </div>
                 </aside>
             </main>
