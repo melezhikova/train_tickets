@@ -7,14 +7,15 @@ import TripTools from "./TripTools";
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { fetchSeats } from "../actions/actionCreators";
+import { fetchSeats, setInfo } from "../actions/actionCreators";
 import Info from "./Info";
+import Loading from "./Loading";
 
 function Seats () {
 
-    const { route } = useSelector(state => state.seats);
+    const { route, loadingStatus, choosenSeats } = useSelector(state => state.seats);
     const { routeSet } = useSelector(state => state.routeSettings);
-    const { error } = useSelector(state => state.showMessages);
+    const { info } = useSelector(state => state.showMessages);
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -31,30 +32,49 @@ function Seats () {
     },[route, routeSet, dispatch])
 
     const goNext = () => {
-        navigate("/passengers");
+        if (choosenSeats.length > 0) {
+            navigate("/passengers");
+        } else {
+            dispatch(setInfo(
+                "Необходимо выбрать хотя бы одно место.", 
+                "",
+                "info",
+            ))
+        }
+        
     }
 
     return (
         <div>
-            {error && <Info />}
+            {info && <Info />}
             <SecondaryHeader />
-            <Stage stage="1" />
-            <main className="mainContainer">
-                <aside className="leftPanel">
-                    <TripTools />
-                    <LastRoutes />
-                </aside>
-                <aside className="rightPanel">
-                    <section className="seats">
-                        <div className="sectionHeader sectionSeats">выбор мест</div>
-                        <Train direction="trainStart" />
-                        <Train direction="trainEnd" />
-                        <div className="btnBox">
-                            <button onClick={goNext} className="yellowBtn seatsBtn">ДАЛЕЕ</button>
-                        </div>
-                    </section>
-                </aside>
-            </main>
+            {loadingStatus === 'pending' && <Loading />}
+            {loadingStatus === 'error' && 
+                <main className="error_mainContainer">
+                    <Info />
+                </main>
+            }
+            {(loadingStatus === 'idle' || loadingStatus === 'success') &&  
+                <div>
+                    <Stage stage="1" />
+                    <main className="mainContainer">
+                        <aside className="leftPanel">
+                            <TripTools />
+                            <LastRoutes />
+                        </aside>
+                        <aside className="rightPanel">
+                            <section className="seats">
+                                <div className="sectionHeader sectionSeats">выбор мест</div>
+                                <Train direction="trainStart" />
+                                <Train direction="trainEnd" />
+                                <div className="btnBox">
+                                    <button onClick={goNext} className="yellowBtn seatsBtn">ДАЛЕЕ</button>
+                                </div>
+                            </section>
+                        </aside>
+                    </main>
+                </div>
+            }
             <Footer />
         </div>
     )

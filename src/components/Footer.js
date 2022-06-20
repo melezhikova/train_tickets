@@ -1,9 +1,12 @@
 import { useSelector, useDispatch } from "react-redux";
 import { fetchEmail, changeEmailField } from "../actions/actionCreators";
+import Info from "./Info";
 
 function Footer () {
 
     const { email } = useSelector(state => state.email);
+    const { info } = useSelector(state => state.showMessages);
+
     const dispatch = useDispatch();
     const handleSubmit = evt => {
         evt.preventDefault();
@@ -17,6 +20,7 @@ function Footer () {
 
     return (
         <footer id="contacts">
+            {info && <Info />}
             <div className="footerContainer">
                 <div className="footerContacts">
                     <h3 className="footerTitle">Свяжитесь с нами</h3>

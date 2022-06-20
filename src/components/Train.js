@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import TrainDetails from "./TrainDetails";
@@ -14,7 +14,6 @@ function Train (props) {
     const [coaches, setCoaches] = useState([]);
     const [choosenCoaches, setChoosenCoaches] = useState([]);
     
-    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -46,7 +45,6 @@ function Train (props) {
 
     const chooseCoach = nmb => {
         setChoosenCoaches(prevState => {
-            console.log(prevState);
             const index = prevState.findIndex(item => item.coach.name.split('-')[1] === nmb);
             if (index === -1) { 
                 prevState.push(seats.find(item => item.coach.name.split('-')[1] === nmb));

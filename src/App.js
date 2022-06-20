@@ -20,7 +20,7 @@ function App() {
           <Route exact path="/passengers" element={<Passengers />} />
           <Route exact path="/paying" element={<Paying />} />
           <Route exact path="/verify" element={<Verify />} />
-          <Route exact path="/successOrder" element={<SuccessOrder />} />
+          <Route exact path="/successOrder" element={<SuccessOrder />} /> 
         </Routes>
       </Router>
     </div>

@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { changeCityField, fetchLastRoutes, fetchRoutes, setRouteSetting } from "../actions/actionCreators";
+import { changeCityField, fetchRoutes, setRouteSetting } from "../actions/actionCreators";
 
 function LastRoutes () {
 
@@ -8,17 +7,12 @@ function LastRoutes () {
     const { routeSet } = useSelector(state => state.routeSettings);
     const dispatch = useDispatch();
 
-    useEffect(() => {
-        dispatch(fetchLastRoutes());
-    },[]);
-
     const getTickets = (from, to, fromCityId, toCityId) => {
         dispatch(changeCityField('cityFrom', from));
         dispatch(changeCityField('cityTo', to));
         dispatch(setRouteSetting('from_city_id', fromCityId));
         dispatch(setRouteSetting('to_city_id', toCityId));
         dispatch(fetchRoutes(routeSet));
-        console.log(routeSet);
     }
 
     return (

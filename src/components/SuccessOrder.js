@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { clearOrder, clearPassengers, clearSeats } from "../actions/actionCreators";
 import Footer from "./Footer";
 import Menu from "./Menu";
 
@@ -19,7 +20,10 @@ function SuccessOrder () {
     }
 
     const backHome = () => {
-
+        navigate('/');
+        dispatch(clearOrder());
+        dispatch(clearPassengers());
+        dispatch(clearSeats());
     }
 
     return (

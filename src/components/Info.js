@@ -1,13 +1,21 @@
 import { useSelector, useDispatch } from "react-redux";
-import { closeError } from "../actions/actionCreators";
+import { useNavigate } from "react-router-dom";
+import { closeError, closeInfo } from "../actions/actionCreators";
 
 function Info () {
     
-    const { messageMain, messageDetails, type } = useSelector(state => state.showMessages);
+    const { error, messageMain, messageDetails, type } = useSelector(state => state.showMessages);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const closePopup = () => {
-        dispatch(closeError());
+        if (error) {
+            dispatch(closeError());
+            navigate('/');
+        } else {
+            dispatch(closeInfo());
+        }
+        
     }
 
     return (

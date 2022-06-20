@@ -148,7 +148,7 @@ function PersonInfo (props) {
                 example = "1 2 3 4 5 6";
                 invalid = "documentNumber";
             }
-        } else if (passengers[index].document_type === "Cвидетельства о рождении") {
+        } else if (passengers[index].document_type === "Свидетельство о рождении") {
             if (!/^M{0,3}(D?C{0,3}|C[DM])(L?X{0,3}|X[LC])(V?I{0,3}|I[VX])[-][А-Я]{2}[-][0-9]{6}/.test(passengers[index].documentNumber)) {
                 text = "Номер свидетельства о рождении указан некорректно";
                 example = "VIII-ЫП-123456";
@@ -163,6 +163,10 @@ function PersonInfo (props) {
             return true;
         }
     
+    }
+
+    const deletePassenger = () => {
+        dispatch(deletePassenger(index));
     }
 
     const handleSubmit = evt => {
@@ -181,7 +185,7 @@ function PersonInfo (props) {
                     <div>Пассажир</div>
                     <div className="personInfo_number">{number}</div>
                 </div>
-                <div onClick={toggleVision} className={vision ? "personInfo_closeBtn" : "visually-hidden"}></div>
+                <div onClick={deletePassenger} className="personInfo_deleteBtn"></div>
             </div>
             {vision && <form onSubmit={handleSubmit} className="personInfo_form">
                 <div className="personInfo_choosing personInfo_isAdult">{passengers[index]?.is_adult === true ? 'Взрослый' : 'Детский'}

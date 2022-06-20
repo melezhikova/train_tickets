@@ -1,5 +1,7 @@
 import { 
     CHANGE_PASSENGER_FIELD,
+    CLEAR_PASSENGERS,
+    DELETE_PASSENGER,
     SET_NEW_PASSENGER,
     SET_PASSENGER_COMPLETE,
 } from "../actions/actionTypes";
@@ -66,6 +68,15 @@ export default function passengersReducer(state = initialState, action) {
                 ...state,
                 passengers: [...passengers],
             }
+        case DELETE_PASSENGER:
+            const { nmb } = action.payload;
+            passengers.splice(nmb,1);
+            return {
+                ...state,
+                passengers: [...passengers],
+            }
+        case CLEAR_PASSENGERS:
+            return initialState;
         default:
             return state;
     }

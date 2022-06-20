@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { setChoosenSeat, setError } from "../actions/actionCreators";
+import { setChoosenSeat, setInfo } from "../actions/actionCreators";
 
 function ChoicePlaces (props) {
 
@@ -28,7 +28,7 @@ function ChoicePlaces (props) {
                     price += item.price;
                 });
             }
-            console.log(seatsInCoach);
+
             setSeats(seats);
             setTotalPice(price);
         }
@@ -52,17 +52,15 @@ function ChoicePlaces (props) {
             if (choosenSeats.length > 0) {
                 choosenSeats.forEach(item => {
                     totalSeats += item.seats.length;
-                    console.log(totalSeats);
-                    console.log(quantity.adultQuantity*1 + quantity.childQuantity*1);
                 })
                 if (totalSeats >= (quantity.adultQuantity*1 + quantity.childQuantity*1)) {
                     if (seatsInCoach.includes(seat)) {
                         dispatch(setChoosenSeat(coach.coach._id, seat, price));
                     } else {
-                        dispatch(setError(
+                        dispatch(setInfo(
                             "Превышение количества выбранных мест.", 
                             "Если Вам необходимо выбрать еще места, необходимо добавить количество билетов (взрослых или детских).",
-                            "error"
+                            "info"
                         ));
                     }
                 } else {

@@ -2,17 +2,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import AvailableSeats from "./AvailableSeats";
 import { format } from "date-fns";
-import { useEffect } from "react";
-import { fetchRoutes, setTrain } from "../actions/actionCreators";
+import { setTrain } from "../actions/actionCreators";
 
 function Routes () {
-    const { routes, routeSet } = useSelector(state => state.routeSettings);
+    const { routes } = useSelector(state => state.routeSettings);
     const dispatch = useDispatch();
     const navigate = useNavigate();
-
-    useEffect (() => {
-        dispatch(fetchRoutes(routeSet));
-    },[routeSet, dispatch])
 
     const chooseTrain = route => {
         dispatch(setTrain(route));

@@ -5,13 +5,15 @@ import { useSelector, useDispatch } from "react-redux";
 import TripDetails from "./TripDetails";
 import { useEffect, useState } from "react";
 import PersonInfo from "./PersonInfo";
-import { changeQuantityField } from "../actions/actionCreators";
+import { changeQuantityField, setInfo, setNewPassenger } from "../actions/actionCreators";
 import { useNavigate } from "react-router-dom";
+import Info from "./Info";
 
 function Passengers () {
 
     const { quantity } = useSelector(state => state.seats);
     const { passengers } = useSelector(state => state.passengers);
+    const { info } = useSelector(state => state.showMessages);
     const [ passList, setPassList ] = useState([]);
     const [ complete, setComplete ] = useState(false);
     const dispatch = useDispatch();
@@ -19,14 +21,20 @@ function Passengers () {
 
     useEffect (() => {
         let array = [];
-        for (let i=1; i <= (quantity.adultQuantity * 1 + quantity.childQuantity * 1 + quantity.childWithoutSeatQuantity * 1); i+=1) {
-            array.push(i);
+        if (passengers.length > 0) {
+            for (let i=1; i <= passengers.length; i+=1) {
+                array.push(i);
+            }
+        } else {
+            for (let i=1; i <= (quantity.adultQuantity * 1 + quantity.childQuantity * 1 + quantity.childWithoutSeatQuantity * 1); i+=1) {
+                array.push(i);
+            }
         }
         setPassList(array);
-    },[quantity]);
+        console.log(array, passengers);
+    },[passengers]);
 
     useEffect (() => {
-        console.log(passengers, complete);
         let check = true;
         for (let i=0; i < passengers.length; i+=1) {
             if (passengers[i].complete === false) {
@@ -37,15 +45,40 @@ function Passengers () {
     },[passengers]);
 
     const addPassenger = () => {
-        dispatch(changeQuantityField('childWithoutSeatQuantity', quantity.childWithoutSeatQuantity * 1 + 1));
+        dispatch(setNewPassenger(passengers.length + 1));
     }
 
     const goNext = () => {
-        navigate('/paying');
+        let adults = 0;
+        let children = 0;
+        passengers.forEach(item => {
+            if (item.is_adult) {
+                adults += 1;
+            } else {
+                children += 1;
+            }
+        })
+        if (quantity.adultQuantity * 1 !== adults) {
+            dispatch(setInfo(
+                "Проверьте правильность ввода данных по пассажирам.", 
+                "Количество взрослых пассажиров должно соответствовать указанному ранее количеству взрослых билетов",
+                "info",
+            ))
+        } else if ((quantity.childQuantity * 1 + quantity.childWithoutSeatQuantity * 1) !== children) {
+            dispatch(setInfo(
+                "Проверьте правильность ввода данных по пассажирам.", 
+                "Количество детей должно соответствовать указанному ранее количеству детских билетов",
+                "info",
+            ))
+        } else {
+            navigate('/paying');
+        }
+        
     }
     
     return (
         <div>
+            {info && <Info />}
             <SecondaryHeader />
             <Stage stage="2" />
             <main className="mainContainer">

@@ -4,13 +4,15 @@ import Stage from "./Stage";
 import { useSelector, useDispatch } from "react-redux";
 import TripDetails from "./TripDetails";
 import { useState } from "react";
-import { changeUserField } from "../actions/actionCreators";
+import { changeUserField, setInfo } from "../actions/actionCreators";
 import { useNavigate } from "react-router-dom";
+import Info from "./Info";
 
 
 function Paying () {
 
     const { first_name, last_name, patronymic, phone, email, payment_method } = useSelector(state => state.user);
+    const { info } = useSelector(state => state.showMessages);
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
@@ -34,6 +36,13 @@ function Paying () {
 
         setErrorField(invalid);
         if (invalid !== null) {
+            if (invalid === "payment_method") {
+                dispatch(setInfo(
+                    "Необходимо указать способ оплаты.", 
+                    "",
+                    "info",
+                ))
+            }
             return false;
         } else {
             return true;
@@ -64,6 +73,7 @@ function Paying () {
 
     return (
         <div>
+            {info && <Info />}
             <SecondaryHeader />
             <Stage stage="3" />
             <main className="mainContainer">

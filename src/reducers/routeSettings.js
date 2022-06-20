@@ -54,7 +54,7 @@ export default function routeSettingsReducer(state = initialState, action) {
                 routeSet: {
                     ...routeSet,
                     [name]: value,
-                } 
+                },
             };
         case SET_CURRENT_PAGE:
             const { number } = action.payload;
@@ -64,12 +64,13 @@ export default function routeSettingsReducer(state = initialState, action) {
                 routeSet: {
                     ...routeSet,
                     offset: routeSet.limit * (number - 1),
-                } 
+                },
             };
         case FETCH_ROUTES_REQUEST:
             return {
                 ...state,
                 loadingStatus: 'pending',
+                error: null,
             };
         case FETCH_ROUTES_FAILURE:
             const {error} = action.payload;
@@ -89,6 +90,7 @@ export default function routeSettingsReducer(state = initialState, action) {
                     items:  data.items,
                 },
                 loadingStatus: 'success',
+                error: null,
             };
         default:
             return state;

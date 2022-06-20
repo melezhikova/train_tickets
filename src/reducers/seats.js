@@ -1,5 +1,6 @@
 import { 
     CHANGE_QUANTITY_FIELD,
+    CLEAR_SEATS,
     FETCH_SEATS_FAILURE,
     FETCH_SEATS_REQUEST,
     FETCH_SEATS_SUCCESS,
@@ -42,6 +43,7 @@ export default function seatsReducer(state = initialState, action) {
             return {
                 ...state,
                 loadingStatus: 'pending',
+                error: null,
             };
         case FETCH_SEATS_FAILURE:
             const {error} = action.payload;
@@ -56,11 +58,11 @@ export default function seatsReducer(state = initialState, action) {
                 ...state,
                 seats: data,
                 loadingStatus: 'success',
+                error: null,
             };
         case SET_CHOOSEN_SEAT:
             const { coach, place, price } = action.payload;
             const { choosenSeats } = state;
-            console.log(choosenSeats);
             if (choosenSeats.length === 0) {
                 return {
                     ...state,
@@ -90,7 +92,9 @@ export default function seatsReducer(state = initialState, action) {
                         }
                     }
                 }
-            }
+            };
+        case CLEAR_SEATS:
+            return initialState;
         default:
             return state;
     }

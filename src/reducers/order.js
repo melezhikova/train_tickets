@@ -1,4 +1,5 @@
 import { 
+    CLEAR_ORDER,
     FETCH_ORDER_FAILURE,
     FETCH_ORDER_REQUEST, 
     FETCH_ORDER_SUCCESS,
@@ -40,6 +41,8 @@ export default function orderReducer(state = initialState, action) {
                 response: data,
                 loadingStatus: 'success',
             };
+        case CLEAR_ORDER:
+            return initialState;
         default:
             return state;
     }

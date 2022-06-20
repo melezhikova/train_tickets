@@ -4,7 +4,12 @@ import {
     CHANGE_PASSENGER_FIELD, 
     CHANGE_QUANTITY_FIELD, 
     CHANGE_USER_FIELD, 
+    CLEAR_ORDER, 
+    CLEAR_PASSENGERS, 
+    CLEAR_SEATS, 
     CLOSE_ERROR, 
+    CLOSE_INFO, 
+    DELETE_PASSENGER, 
     FETCH_CITIES_FAILURE, 
     FETCH_CITIES_REQUEST, 
     FETCH_CITIES_SUCCESS, 
@@ -26,6 +31,7 @@ import {
     SET_CHOOSEN_SEAT, 
     SET_CURRENT_PAGE, 
     SET_ERROR, 
+    SET_INFO, 
     SET_NEW_PASSENGER,
     SET_PASSENGER_COMPLETE, 
     SET_ROUTE_SETTING, 
@@ -185,6 +191,13 @@ export const setPassengerComplete = idx => ({
     },
 });
 
+export const deletePassenger = nmb => ({
+    type: DELETE_PASSENGER,
+    payload: {
+        nmb,
+    },
+});
+
 export const changePassengerField = (name, value, passNumber) => ({
     type: CHANGE_PASSENGER_FIELD,
     payload: {
@@ -211,8 +224,16 @@ export const setChoosenSeat = (coach, place, price) => ({
     },
 });
 
-export const setError = (messageMain, messageDetails, type) => ({
+export const setError = () => ({
     type: SET_ERROR,
+});
+
+export const closeError = () => ({
+    type: CLOSE_ERROR,
+});
+
+export const setInfo = (messageMain, messageDetails, type) => ({
+    type: SET_INFO,
     payload: {
         messageMain,
         messageDetails,
@@ -220,8 +241,8 @@ export const setError = (messageMain, messageDetails, type) => ({
     },
 });
 
-export const closeError = () => ({
-    type: CLOSE_ERROR,
+export const closeInfo = () => ({
+    type: CLOSE_INFO,
 });
 
 export const fetchOrderRequest = () => ({
@@ -249,6 +270,18 @@ export const setTotalPrice = price => ({
     },
 });
 
+export const clearOrder = () => ({
+    type: CLEAR_ORDER,
+});
+
+export const clearPassengers = () => ({
+    type: CLEAR_PASSENGERS,
+});
+
+export const clearSeats = () => ({
+    type: CLEAR_SEATS,
+});
+
 
 
 export const fetchCities = (nameList, search) => async (dispatch) => {
@@ -263,6 +296,7 @@ export const fetchCities = (nameList, search) => async (dispatch) => {
         dispatch(fetchCitiesSuccess(nameList, data));
     } catch (e) {
         dispatch(fetchCitiesFailure(e.message));
+        dispatch(setError);
     }
 }
 
@@ -285,6 +319,7 @@ export const fetchRoutes = data => async (dispatch) => {
     dispatch(fetchRoutesSuccess(reguest));
     } catch (e) {
         dispatch(fetchRoutesFailure(e.message));
+        dispatch(setError);
     }
 }
 
@@ -300,6 +335,7 @@ export const fetchLastRoutes = () => async (dispatch) => {
         dispatch(fetchLastRoutesSuccess(data));
     } catch (e) {
         dispatch(fetchLastRoutesFailure(e.message));
+        dispatch(setError);
     }
 }
 
@@ -315,8 +351,16 @@ export const fetchEmail = email => async (dispatch) => {
         const data = await response.json();
         console.log(data);
         dispatch(fetchEmailSuccess());
+        if (data.status) {
+            dispatch(setInfo(
+                "Вы успешно подписались на рассылку",
+                "",
+                "info",
+            ))
+        }
     } catch (e) {
         dispatch(fetchEmailFailure(e.message));
+        dispatch(setError);
     }
 }
 
@@ -339,6 +383,7 @@ export const fetchSeats = (id, data) => async (dispatch) => {
     dispatch(fetchSeatsSuccess(reguest));
     } catch (e) {
         dispatch(fetchSeatsFailure(e.message));
+        dispatch(setError);
     }
 }
 
@@ -355,8 +400,11 @@ export const fetchOrder = (order, callback) => async (dispatch) => {
         const data = await response.json();
         console.log(data);
         dispatch(fetchOrderSuccess(data));
-        callback();
+        if (data.status) {
+            callback();
+        }
     } catch (e) {
         dispatch(fetchOrderFailure(e.message));
+        dispatch(setError);
     }
 }

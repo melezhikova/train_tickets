@@ -18,6 +18,7 @@ export default function emailReducer(state = initialState, action) {
             return {
                 ...state,
                 loadingStatus: 'pending',
+                error: null,
             };
         case FETCH_EMAIL_FAILURE:
             const {error} = action.payload;
@@ -31,6 +32,7 @@ export default function emailReducer(state = initialState, action) {
                 ...state,
                 email: '',
                 loadingStatus: 'success',
+                error: null,
             };
         default:
             return state;

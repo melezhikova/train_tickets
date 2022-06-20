@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { changeCityField, fetchCities, fetchRoutes, setRouteSetting, swapCities } from "../actions/actionCreators";
+import { changeCityField, fetchCities, fetchLastRoutes, fetchRoutes, setRouteSetting, swapCities } from "../actions/actionCreators";
 import { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -19,7 +19,6 @@ function HeaderForm (props) {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        console.log(citiesListFrom, citiesListTo);
         if (citiesListFrom.length > 0) {
             const fromCityInList = citiesListFrom.findIndex(o => o.name === cityFrom);
             if (fromCityInList !== -1) {
@@ -42,6 +41,7 @@ function HeaderForm (props) {
         evt.preventDefault();
         navigate('/tickets');
         dispatch(fetchRoutes(routeSet));
+        dispatch(fetchLastRoutes());
     }
 
     const handleChangeCity = evt => {
